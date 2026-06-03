@@ -1,0 +1,1356 @@
+2026-06-03 11:02:23 | INFO     | root | OJT Checker System v1.0.0 — logging initialised.
+2026-06-03 11:02:23 | INFO     | __main__ | Starting OJT Checker System…
+2026-06-03 11:02:50 | INFO     | core.excel_reader | Loading Excel master file: Demoojtexcel.xlsx
+2026-06-03 11:02:50 | INFO     | core.excel_reader | Excel loaded: 9 student records across 1 courses
+2026-06-03 11:03:17 | INFO     | core.pdf_reader | Found 9 PDF files in D:\Pranav Work Station\Demo\archive (5)
+2026-06-03 11:03:17 | INFO     | core.processor | Found 9 PDFs. Starting processing…
+2026-06-03 11:03:17 | INFO     | core.processor | Batch 1: processing 9 PDFs…
+2026-06-03 11:03:17 | DEBUG    | core.pdf_reader | Opened PDF: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf (7 pages)
+2026-06-03 11:03:17 | DEBUG    | core.pdf_reader | Opened PDF: AMULYA_DMCFSJU17090 (1).pdf (7 pages)
+2026-06-03 11:03:17 | DEBUG    | core.pdf_reader | Opened PDF: BILLA SWAPNA_DMCFSJU13644 (1).pdf (7 pages)
+2026-06-03 11:03:17 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:03:18 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:03:18 | DEBUG    | core.pdf_reader | Opened PDF: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf (7 pages)
+2026-06-03 11:03:18 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:03:18 | DEBUG    | core.pdf_reader | Opened PDF: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf (7 pages)
+2026-06-03 11:03:18 | DEBUG    | core.pdf_reader | Opened PDF: MD MAHATABALI_DMCFSJU06404.pdf (7 pages)
+2026-06-03 11:03:19 | DEBUG    | core.pdf_reader | Opened PDF: PAWAR JYOTHI BAI_DMCFSJU08004.pdf (7 pages)
+2026-06-03 11:03:18 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:03:19 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:03:19 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:03:19 | DEBUG    | core.pdf_reader | Opened PDF: SANGMESH_DMCFSJU06419.pdf (7 pages)
+2026-06-03 11:03:19 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:03:19 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:03:28 | WARNING  | easyocr.easyocr | Downloading detection model, please wait. This may take several minutes depending upon your network connection.
+2026-06-03 11:03:28 | WARNING  | easyocr.easyocr | Downloading detection model, please wait. This may take several minutes depending upon your network connection.
+2026-06-03 11:03:28 | WARNING  | easyocr.easyocr | Downloading detection model, please wait. This may take several minutes depending upon your network connection.
+2026-06-03 11:03:28 | WARNING  | easyocr.easyocr | Downloading detection model, please wait. This may take several minutes depending upon your network connection.
+2026-06-03 11:03:28 | WARNING  | easyocr.easyocr | Downloading detection model, please wait. This may take several minutes depending upon your network connection.
+2026-06-03 11:03:28 | WARNING  | easyocr.easyocr | Downloading detection model, please wait. This may take several minutes depending upon your network connection.
+2026-06-03 11:03:28 | WARNING  | easyocr.easyocr | Downloading detection model, please wait. This may take several minutes depending upon your network connection.
+2026-06-03 11:03:28 | WARNING  | easyocr.easyocr | Downloading detection model, please wait. This may take several minutes depending upon your network connection.
+2026-06-03 11:03:44 | ERROR    | core.processor | Pipeline error for MD MAHATABALI_DMCFSJU06404.pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 251, in _process_single_pdf
+    ocr_fields = self.ocr.extract_fields(page_image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 164, in extract_fields
+    results = self.read_image(image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 121, in read_image
+    self._ensure_reader()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 70, in _ensure_reader
+    self._reader = get_ocr_reader()
+                   ~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 31, in get_ocr_reader
+    _ocr_reader = easyocr.Reader(
+        config.OCR_LANGUAGES,
+        gpu=config.OCR_GPU,
+        verbose=False,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 92, in __init__
+    detector_path = self.getDetectorPath(detect_network)
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 253, in getDetectorPath
+    download_and_unzip(self.detection_models[self.detect_network]['url'], self.detection_models[self.detect_network]['filename'], self.model_storage_directory, self.verbose)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\utils.py", line 631, in download_and_unzip
+    os.remove(zip_path)
+    ~~~~~~~~~^^^^^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\dell/.EasyOCR//model\\temp.zip'
+2026-06-03 11:03:44 | INFO     | core.processor | [1/9] MD MAHATABALI_DMCFSJU06404.pdf → ERROR
+2026-06-03 11:03:44 | DEBUG    | core.pdf_reader | Opened PDF: VANAM LAXMI_DMCFSJU05080.pdf (7 pages)
+2026-06-03 11:03:45 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:03:45 | WARNING  | easyocr.easyocr | Downloading recognition model, please wait. This may take several minutes depending upon your network connection.
+2026-06-03 11:03:49 | ERROR    | core.processor | Pipeline error for VANAM LAXMI_DMCFSJU05080.pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 251, in _process_single_pdf
+    ocr_fields = self.ocr.extract_fields(page_image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 164, in extract_fields
+    results = self.read_image(image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 121, in read_image
+    self._ensure_reader()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 70, in _ensure_reader
+    self._reader = get_ocr_reader()
+                   ~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 31, in get_ocr_reader
+    _ocr_reader = easyocr.Reader(
+        config.OCR_LANGUAGES,
+        gpu=config.OCR_GPU,
+        verbose=False,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 178, in __init__
+    download_and_unzip(model['url'], model['filename'], self.model_storage_directory, verbose)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\utils.py", line 629, in download_and_unzip
+    with ZipFile(zip_path, 'r') as zipObj:
+         ~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1471, in __init__
+    self._RealGetContents()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1538, in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+zipfile.BadZipFile: File is not a zip file
+2026-06-03 11:03:49 | INFO     | core.processor | [2/9] VANAM LAXMI_DMCFSJU05080.pdf → ERROR
+2026-06-03 11:04:07 | ERROR    | core.processor | Pipeline error for CHAKALI SANDHYA RANI_DMCFSJU05093.pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 251, in _process_single_pdf
+    ocr_fields = self.ocr.extract_fields(page_image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 164, in extract_fields
+    results = self.read_image(image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 121, in read_image
+    self._ensure_reader()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 70, in _ensure_reader
+    self._reader = get_ocr_reader()
+                   ~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 31, in get_ocr_reader
+    _ocr_reader = easyocr.Reader(
+        config.OCR_LANGUAGES,
+        gpu=config.OCR_GPU,
+        verbose=False,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 92, in __init__
+    detector_path = self.getDetectorPath(detect_network)
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 253, in getDetectorPath
+    download_and_unzip(self.detection_models[self.detect_network]['url'], self.detection_models[self.detect_network]['filename'], self.model_storage_directory, self.verbose)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\utils.py", line 630, in download_and_unzip
+    zipObj.extract(filename, model_storage_directory)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1849, in extract
+    return self._extract_member(member, path, pwd)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1927, in _extract_member
+    with self.open(member, pwd=pwd) as source, \
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1760, in open
+    raise BadZipFile(
+        'File name in directory %r and header %r differ.'
+        % (zinfo.orig_filename, fname))
+zipfile.BadZipFile: File name in directory 'craft_mlt_25k.pth' and header b'english_g2.pth' differ.
+2026-06-03 11:04:07 | INFO     | core.processor | [3/9] CHAKALI SANDHYA RANI_DMCFSJU05093.pdf → ERROR
+2026-06-03 11:04:16 | ERROR    | core.processor | Pipeline error for BILLA SWAPNA_DMCFSJU13644 (1).pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 251, in _process_single_pdf
+    ocr_fields = self.ocr.extract_fields(page_image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 164, in extract_fields
+    results = self.read_image(image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 121, in read_image
+    self._ensure_reader()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 70, in _ensure_reader
+    self._reader = get_ocr_reader()
+                   ~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 31, in get_ocr_reader
+    _ocr_reader = easyocr.Reader(
+        config.OCR_LANGUAGES,
+        gpu=config.OCR_GPU,
+        verbose=False,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 92, in __init__
+    detector_path = self.getDetectorPath(detect_network)
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 253, in getDetectorPath
+    download_and_unzip(self.detection_models[self.detect_network]['url'], self.detection_models[self.detect_network]['filename'], self.model_storage_directory, self.verbose)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\utils.py", line 630, in download_and_unzip
+    zipObj.extract(filename, model_storage_directory)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1849, in extract
+    return self._extract_member(member, path, pwd)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1927, in _extract_member
+    with self.open(member, pwd=pwd) as source, \
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1760, in open
+    raise BadZipFile(
+        'File name in directory %r and header %r differ.'
+        % (zinfo.orig_filename, fname))
+zipfile.BadZipFile: File name in directory 'craft_mlt_25k.pth' and header b'english_g2.pth' differ.
+2026-06-03 11:04:16 | INFO     | core.processor | [4/9] BILLA SWAPNA_DMCFSJU13644 (1).pdf → ERROR
+2026-06-03 11:04:19 | ERROR    | core.processor | Pipeline error for PAWAR JYOTHI BAI_DMCFSJU08004.pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 251, in _process_single_pdf
+    ocr_fields = self.ocr.extract_fields(page_image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 164, in extract_fields
+    results = self.read_image(image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 121, in read_image
+    self._ensure_reader()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 70, in _ensure_reader
+    self._reader = get_ocr_reader()
+                   ~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 31, in get_ocr_reader
+    _ocr_reader = easyocr.Reader(
+        config.OCR_LANGUAGES,
+        gpu=config.OCR_GPU,
+        verbose=False,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 92, in __init__
+    detector_path = self.getDetectorPath(detect_network)
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 253, in getDetectorPath
+    download_and_unzip(self.detection_models[self.detect_network]['url'], self.detection_models[self.detect_network]['filename'], self.model_storage_directory, self.verbose)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\utils.py", line 630, in download_and_unzip
+    zipObj.extract(filename, model_storage_directory)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1849, in extract
+    return self._extract_member(member, path, pwd)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1927, in _extract_member
+    with self.open(member, pwd=pwd) as source, \
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1760, in open
+    raise BadZipFile(
+        'File name in directory %r and header %r differ.'
+        % (zinfo.orig_filename, fname))
+zipfile.BadZipFile: File name in directory 'craft_mlt_25k.pth' and header b'english_g2.pth' differ.
+2026-06-03 11:04:19 | INFO     | core.processor | [5/9] PAWAR JYOTHI BAI_DMCFSJU08004.pdf → ERROR
+2026-06-03 11:04:21 | ERROR    | core.processor | Pipeline error for B VIDHYA SAGAR_DMCFSJU10271 (1).pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 251, in _process_single_pdf
+    ocr_fields = self.ocr.extract_fields(page_image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 164, in extract_fields
+    results = self.read_image(image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 121, in read_image
+    self._ensure_reader()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 70, in _ensure_reader
+    self._reader = get_ocr_reader()
+                   ~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 31, in get_ocr_reader
+    _ocr_reader = easyocr.Reader(
+        config.OCR_LANGUAGES,
+        gpu=config.OCR_GPU,
+        verbose=False,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 92, in __init__
+    detector_path = self.getDetectorPath(detect_network)
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 253, in getDetectorPath
+    download_and_unzip(self.detection_models[self.detect_network]['url'], self.detection_models[self.detect_network]['filename'], self.model_storage_directory, self.verbose)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\utils.py", line 630, in download_and_unzip
+    zipObj.extract(filename, model_storage_directory)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1849, in extract
+    return self._extract_member(member, path, pwd)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1927, in _extract_member
+    with self.open(member, pwd=pwd) as source, \
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1760, in open
+    raise BadZipFile(
+        'File name in directory %r and header %r differ.'
+        % (zinfo.orig_filename, fname))
+zipfile.BadZipFile: File name in directory 'craft_mlt_25k.pth' and header b'english_g2.pth' differ.
+2026-06-03 11:04:21 | INFO     | core.processor | [6/9] B VIDHYA SAGAR_DMCFSJU10271 (1).pdf → ERROR
+2026-06-03 11:04:22 | ERROR    | core.processor | Pipeline error for CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 251, in _process_single_pdf
+    ocr_fields = self.ocr.extract_fields(page_image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 164, in extract_fields
+    results = self.read_image(image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 121, in read_image
+    self._ensure_reader()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 70, in _ensure_reader
+    self._reader = get_ocr_reader()
+                   ~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 31, in get_ocr_reader
+    _ocr_reader = easyocr.Reader(
+        config.OCR_LANGUAGES,
+        gpu=config.OCR_GPU,
+        verbose=False,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 92, in __init__
+    detector_path = self.getDetectorPath(detect_network)
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 253, in getDetectorPath
+    download_and_unzip(self.detection_models[self.detect_network]['url'], self.detection_models[self.detect_network]['filename'], self.model_storage_directory, self.verbose)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\utils.py", line 630, in download_and_unzip
+    zipObj.extract(filename, model_storage_directory)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1849, in extract
+    return self._extract_member(member, path, pwd)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1927, in _extract_member
+    with self.open(member, pwd=pwd) as source, \
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1760, in open
+    raise BadZipFile(
+        'File name in directory %r and header %r differ.'
+        % (zinfo.orig_filename, fname))
+zipfile.BadZipFile: File name in directory 'craft_mlt_25k.pth' and header b'english_g2.pth' differ.
+2026-06-03 11:04:22 | INFO     | core.processor | [7/9] CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf → ERROR
+2026-06-03 11:04:23 | ERROR    | core.processor | Pipeline error for AMULYA_DMCFSJU17090 (1).pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 251, in _process_single_pdf
+    ocr_fields = self.ocr.extract_fields(page_image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 164, in extract_fields
+    results = self.read_image(image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 121, in read_image
+    self._ensure_reader()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 70, in _ensure_reader
+    self._reader = get_ocr_reader()
+                   ~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 31, in get_ocr_reader
+    _ocr_reader = easyocr.Reader(
+        config.OCR_LANGUAGES,
+        gpu=config.OCR_GPU,
+        verbose=False,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 92, in __init__
+    detector_path = self.getDetectorPath(detect_network)
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 253, in getDetectorPath
+    download_and_unzip(self.detection_models[self.detect_network]['url'], self.detection_models[self.detect_network]['filename'], self.model_storage_directory, self.verbose)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\utils.py", line 630, in download_and_unzip
+    zipObj.extract(filename, model_storage_directory)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1849, in extract
+    return self._extract_member(member, path, pwd)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1927, in _extract_member
+    with self.open(member, pwd=pwd) as source, \
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1760, in open
+    raise BadZipFile(
+        'File name in directory %r and header %r differ.'
+        % (zinfo.orig_filename, fname))
+zipfile.BadZipFile: File name in directory 'craft_mlt_25k.pth' and header b'english_g2.pth' differ.
+2026-06-03 11:04:23 | INFO     | core.processor | [8/9] AMULYA_DMCFSJU17090 (1).pdf → ERROR
+2026-06-03 11:04:23 | ERROR    | core.processor | Pipeline error for SANGMESH_DMCFSJU06419.pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 251, in _process_single_pdf
+    ocr_fields = self.ocr.extract_fields(page_image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 164, in extract_fields
+    results = self.read_image(image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 121, in read_image
+    self._ensure_reader()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 70, in _ensure_reader
+    self._reader = get_ocr_reader()
+                   ~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 31, in get_ocr_reader
+    _ocr_reader = easyocr.Reader(
+        config.OCR_LANGUAGES,
+        gpu=config.OCR_GPU,
+        verbose=False,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 92, in __init__
+    detector_path = self.getDetectorPath(detect_network)
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 253, in getDetectorPath
+    download_and_unzip(self.detection_models[self.detect_network]['url'], self.detection_models[self.detect_network]['filename'], self.model_storage_directory, self.verbose)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\utils.py", line 630, in download_and_unzip
+    zipObj.extract(filename, model_storage_directory)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1849, in extract
+    return self._extract_member(member, path, pwd)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1927, in _extract_member
+    with self.open(member, pwd=pwd) as source, \
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\zipfile\__init__.py", line 1760, in open
+    raise BadZipFile(
+        'File name in directory %r and header %r differ.'
+        % (zinfo.orig_filename, fname))
+zipfile.BadZipFile: File name in directory 'craft_mlt_25k.pth' and header b'english_g2.pth' differ.
+2026-06-03 11:04:23 | INFO     | core.processor | [9/9] SANGMESH_DMCFSJU06419.pdf → ERROR
+2026-06-03 11:04:23 | INFO     | core.processor | Memory usage high (10883 MB). Pausing 5 seconds to let GC run…
+2026-06-03 11:04:28 | INFO     | core.processor | Generating Excel report…
+2026-06-03 11:04:28 | INFO     | core.report_generator | Report saved: D:\Pranav Work Station\Demo\Excel Output\reports\ojt_validation_report_20260603_110428.xlsx
+2026-06-03 11:04:28 | INFO     | core.processor | Report saved: ojt_validation_report_20260603_110428.xlsx
+2026-06-03 11:04:28 | INFO     | core.processor | Done! Total: 9 | Pass: 0 | Fail: 0 | Errors: 9
+2026-06-03 11:05:16 | INFO     | __main__ | OJT Checker System exited.
+2026-06-03 11:06:01 | INFO     | root | OJT Checker System v1.0.0 — logging initialised.
+2026-06-03 11:06:01 | INFO     | __main__ | Starting OJT Checker System…
+2026-06-03 11:06:17 | INFO     | core.excel_reader | Loading Excel master file: Demoojtexcel.xlsx
+2026-06-03 11:06:17 | INFO     | core.excel_reader | Excel loaded: 9 student records across 1 courses
+2026-06-03 11:06:45 | INFO     | core.pdf_reader | Found 9 PDF files in D:\Pranav Work Station\Demo\archive (5)
+2026-06-03 11:06:45 | INFO     | core.processor | Found 9 PDFs. Starting processing…
+2026-06-03 11:06:45 | INFO     | core.processor | Batch 1: processing 9 PDFs…
+2026-06-03 11:06:45 | DEBUG    | core.pdf_reader | Opened PDF: AMULYA_DMCFSJU17090 (1).pdf (7 pages)
+2026-06-03 11:06:45 | DEBUG    | core.pdf_reader | Opened PDF: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf (7 pages)
+2026-06-03 11:06:46 | DEBUG    | core.pdf_reader | Opened PDF: BILLA SWAPNA_DMCFSJU13644 (1).pdf (7 pages)
+2026-06-03 11:06:46 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:06:46 | DEBUG    | core.pdf_reader | Opened PDF: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf (7 pages)
+2026-06-03 11:06:46 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:06:46 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:06:46 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:06:51 | WARNING  | easyocr.easyocr | Downloading recognition model, please wait. This may take several minutes depending upon your network connection.
+2026-06-03 11:06:51 | WARNING  | easyocr.easyocr | Downloading recognition model, please wait. This may take several minutes depending upon your network connection.
+2026-06-03 11:06:51 | WARNING  | easyocr.easyocr | Downloading recognition model, please wait. This may take several minutes depending upon your network connection.
+2026-06-03 11:06:51 | WARNING  | easyocr.easyocr | Downloading recognition model, please wait. This may take several minutes depending upon your network connection.
+2026-06-03 11:06:54 | ERROR    | core.processor | Pipeline error for BILLA SWAPNA_DMCFSJU13644 (1).pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 251, in _process_single_pdf
+    ocr_fields = self.ocr.extract_fields(page_image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 164, in extract_fields
+    results = self.read_image(image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 121, in read_image
+    self._ensure_reader()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 70, in _ensure_reader
+    self._reader = get_ocr_reader()
+                   ~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 31, in get_ocr_reader
+    _ocr_reader = easyocr.Reader(
+        config.OCR_LANGUAGES,
+        gpu=config.OCR_GPU,
+        verbose=False,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 178, in __init__
+    download_and_unzip(model['url'], model['filename'], self.model_storage_directory, verbose)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\utils.py", line 631, in download_and_unzip
+    os.remove(zip_path)
+    ~~~~~~~~~^^^^^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\dell/.EasyOCR//model\\temp.zip'
+2026-06-03 11:06:54 | INFO     | core.processor | [1/9] BILLA SWAPNA_DMCFSJU13644 (1).pdf → ERROR
+2026-06-03 11:06:54 | DEBUG    | core.pdf_reader | Opened PDF: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf (7 pages)
+2026-06-03 11:06:54 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:06:55 | ERROR    | core.processor | Pipeline error for CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 251, in _process_single_pdf
+    ocr_fields = self.ocr.extract_fields(page_image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 164, in extract_fields
+    results = self.read_image(image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 121, in read_image
+    self._ensure_reader()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 70, in _ensure_reader
+    self._reader = get_ocr_reader()
+                   ~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 31, in get_ocr_reader
+    _ocr_reader = easyocr.Reader(
+        config.OCR_LANGUAGES,
+        gpu=config.OCR_GPU,
+        verbose=False,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 184, in __init__
+    LOGGER.warning(corrupt_msg)
+                   ^^^^^^^^^^^
+NameError: name 'corrupt_msg' is not defined
+2026-06-03 11:06:55 | INFO     | core.processor | [2/9] CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf → ERROR
+2026-06-03 11:06:55 | DEBUG    | core.pdf_reader | Opened PDF: MD MAHATABALI_DMCFSJU06404.pdf (7 pages)
+2026-06-03 11:06:55 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:06:55 | ERROR    | core.processor | Pipeline error for AMULYA_DMCFSJU17090 (1).pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 251, in _process_single_pdf
+    ocr_fields = self.ocr.extract_fields(page_image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 164, in extract_fields
+    results = self.read_image(image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 121, in read_image
+    self._ensure_reader()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 70, in _ensure_reader
+    self._reader = get_ocr_reader()
+                   ~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 31, in get_ocr_reader
+    _ocr_reader = easyocr.Reader(
+        config.OCR_LANGUAGES,
+        gpu=config.OCR_GPU,
+        verbose=False,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 178, in __init__
+    download_and_unzip(model['url'], model['filename'], self.model_storage_directory, verbose)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\utils.py", line 631, in download_and_unzip
+    os.remove(zip_path)
+    ~~~~~~~~~^^^^^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\dell/.EasyOCR//model\\temp.zip'
+2026-06-03 11:06:55 | INFO     | core.processor | [3/9] AMULYA_DMCFSJU17090 (1).pdf → ERROR
+2026-06-03 11:06:55 | DEBUG    | core.pdf_reader | Opened PDF: PAWAR JYOTHI BAI_DMCFSJU08004.pdf (7 pages)
+2026-06-03 11:06:55 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:06:57 | ERROR    | core.processor | Pipeline error for B VIDHYA SAGAR_DMCFSJU10271 (1).pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 251, in _process_single_pdf
+    ocr_fields = self.ocr.extract_fields(page_image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 164, in extract_fields
+    results = self.read_image(image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 121, in read_image
+    self._ensure_reader()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 70, in _ensure_reader
+    self._reader = get_ocr_reader()
+                   ~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 31, in get_ocr_reader
+    _ocr_reader = easyocr.Reader(
+        config.OCR_LANGUAGES,
+        gpu=config.OCR_GPU,
+        verbose=False,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 178, in __init__
+    download_and_unzip(model['url'], model['filename'], self.model_storage_directory, verbose)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\utils.py", line 631, in download_and_unzip
+    os.remove(zip_path)
+    ~~~~~~~~~^^^^^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\dell/.EasyOCR//model\\temp.zip'
+2026-06-03 11:06:57 | INFO     | core.processor | [4/9] B VIDHYA SAGAR_DMCFSJU10271 (1).pdf → ERROR
+2026-06-03 11:06:57 | DEBUG    | core.pdf_reader | Opened PDF: SANGMESH_DMCFSJU06419.pdf (7 pages)
+2026-06-03 11:06:57 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:06:57 | ERROR    | core.processor | Pipeline error for SANGMESH_DMCFSJU06419.pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 251, in _process_single_pdf
+    ocr_fields = self.ocr.extract_fields(page_image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 164, in extract_fields
+    results = self.read_image(image)
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 121, in read_image
+    self._ensure_reader()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 70, in _ensure_reader
+    self._reader = get_ocr_reader()
+                   ~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\ocr_engine.py", line 31, in get_ocr_reader
+    _ocr_reader = easyocr.Reader(
+        config.OCR_LANGUAGES,
+        gpu=config.OCR_GPU,
+        verbose=False,
+    )
+  File "C:\Users\dell\AppData\Roaming\Python\Python314\site-packages\easyocr\easyocr.py", line 184, in __init__
+    LOGGER.warning(corrupt_msg)
+                   ^^^^^^^^^^^
+NameError: name 'corrupt_msg' is not defined
+2026-06-03 11:06:57 | INFO     | core.processor | [5/9] SANGMESH_DMCFSJU06419.pdf → ERROR
+2026-06-03 11:06:57 | DEBUG    | core.pdf_reader | Opened PDF: VANAM LAXMI_DMCFSJU05080.pdf (7 pages)
+2026-06-03 11:06:58 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:07:04 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:07:04 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:07:05 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:07:06 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:07:45 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'Md Malitabali', 'course_name': 'Monufactusi _', 'enrollment_no': '', 'ojt_period': 'Contact Number; mail', 'department': 'Role of Stdent Trainee'}
+2026-06-03 11:07:45 | WARNING  | core.validator | No student record found for enrollment='', name='Md Malitabali'
+2026-06-03 11:07:45 | DEBUG    | core.stamp_detector | Ink ratio: 0.0114 (threshold: 0.01)
+2026-06-03 11:07:45 | DEBUG    | core.stamp_detector | Ink ratio: 0.0117 (threshold: 0.01)
+2026-06-03 11:07:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0073 (threshold: 0.01)
+2026-06-03 11:07:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0061 (threshold: 0.01)
+2026-06-03 11:07:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0075 (threshold: 0.01)
+2026-06-03 11:07:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0078 (threshold: 0.01)
+2026-06-03 11:07:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0114 (threshold: 0.01)
+2026-06-03 11:07:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0138 (threshold: 0.01)
+2026-06-03 11:07:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0081 (threshold: 0.01)
+2026-06-03 11:07:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0055 (threshold: 0.01)
+2026-06-03 11:07:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0110 (threshold: 0.01)
+2026-06-03 11:07:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0127 (threshold: 0.01)
+2026-06-03 11:07:46 | DEBUG    | core.processor | MD MAHATABALI_DMCFSJU06404.pdf: Stamp FAIL on pages [3, 4, 6]
+2026-06-03 11:07:46 | INFO     | core.processor | [6/9] MD MAHATABALI_DMCFSJU06404.pdf → ERROR
+2026-06-03 11:08:56 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': '9ola906482', 'course_name': '', 'enrollment_no': '', 'ojt_period': '', 'department': ''}
+2026-06-03 11:08:56 | WARNING  | core.validator | No student record found for enrollment='', name='9ola906482'
+2026-06-03 11:08:57 | DEBUG    | core.stamp_detector | Ink ratio: 0.0066 (threshold: 0.01)
+2026-06-03 11:08:57 | DEBUG    | core.stamp_detector | Ink ratio: 0.0081 (threshold: 0.01)
+2026-06-03 11:08:57 | DEBUG    | core.stamp_detector | Ink ratio: 0.0101 (threshold: 0.01)
+2026-06-03 11:08:57 | DEBUG    | core.stamp_detector | Ink ratio: 0.0096 (threshold: 0.01)
+2026-06-03 11:08:57 | DEBUG    | core.stamp_detector | Ink ratio: 0.0122 (threshold: 0.01)
+2026-06-03 11:08:57 | DEBUG    | core.stamp_detector | Ink ratio: 0.0118 (threshold: 0.01)
+2026-06-03 11:08:57 | DEBUG    | core.stamp_detector | Ink ratio: 0.0081 (threshold: 0.01)
+2026-06-03 11:08:57 | DEBUG    | core.stamp_detector | Ink ratio: 0.0117 (threshold: 0.01)
+2026-06-03 11:08:58 | DEBUG    | core.stamp_detector | Ink ratio: 0.0092 (threshold: 0.01)
+2026-06-03 11:08:58 | DEBUG    | core.stamp_detector | Ink ratio: 0.0099 (threshold: 0.01)
+2026-06-03 11:08:58 | DEBUG    | core.stamp_detector | Ink ratio: 0.0074 (threshold: 0.01)
+2026-06-03 11:08:58 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 11:08:58 | DEBUG    | core.processor | VANAM LAXMI_DMCFSJU05080.pdf: Stamp FAIL on pages [2, 6, 7]
+2026-06-03 11:08:58 | INFO     | core.processor | [7/9] VANAM LAXMI_DMCFSJU05080.pdf → ERROR
+2026-06-03 11:09:02 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'Skill Course Nane', 'course_name': 'Jain University', 'enrollment_no': 'DepartmentandJob', 'ojt_period': '28 /10J4+a', 'department': 'Role of Student Trainee'}
+2026-06-03 11:09:02 | WARNING  | core.validator | No student record found for enrollment='DepartmentandJob', name='Skill Course Nane'
+2026-06-03 11:09:02 | DEBUG    | core.stamp_detector | Ink ratio: 0.0105 (threshold: 0.01)
+2026-06-03 11:09:02 | DEBUG    | core.stamp_detector | Ink ratio: 0.0103 (threshold: 0.01)
+2026-06-03 11:09:02 | DEBUG    | core.stamp_detector | Ink ratio: 0.0087 (threshold: 0.01)
+2026-06-03 11:09:02 | DEBUG    | core.stamp_detector | Ink ratio: 0.0078 (threshold: 0.01)
+2026-06-03 11:09:02 | DEBUG    | core.stamp_detector | Ink ratio: 0.0091 (threshold: 0.01)
+2026-06-03 11:09:02 | DEBUG    | core.stamp_detector | Ink ratio: 0.0073 (threshold: 0.01)
+2026-06-03 11:09:02 | DEBUG    | core.stamp_detector | Ink ratio: 0.0110 (threshold: 0.01)
+2026-06-03 11:09:02 | DEBUG    | core.stamp_detector | Ink ratio: 0.0134 (threshold: 0.01)
+2026-06-03 11:09:03 | DEBUG    | core.stamp_detector | Ink ratio: 0.0084 (threshold: 0.01)
+2026-06-03 11:09:03 | DEBUG    | core.stamp_detector | Ink ratio: 0.0067 (threshold: 0.01)
+2026-06-03 11:09:03 | DEBUG    | core.stamp_detector | Ink ratio: 0.0121 (threshold: 0.01)
+2026-06-03 11:09:03 | DEBUG    | core.stamp_detector | Ink ratio: 0.0144 (threshold: 0.01)
+2026-06-03 11:09:03 | DEBUG    | core.processor | PAWAR JYOTHI BAI_DMCFSJU08004.pdf: Stamp FAIL on pages [3, 4, 6]
+2026-06-03 11:09:03 | INFO     | core.processor | [8/9] PAWAR JYOTHI BAI_DMCFSJU08004.pdf → ERROR
+2026-06-03 11:09:08 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'CHAkA LI SANDHYA RANZ_', 'course_name': 'Jain University', 'enrollment_no': 'DMCFSJU8509', 'ojt_period': 'Contact Number; mail', 'department': 'Role of Student Trainee'}
+2026-06-03 11:09:08 | DEBUG    | core.validator | Fuzzy name match 'CHAkA LI SANDHYA RANZ_' → 'CHAKALI SANDHYA RANI' (score=85.71428571428572)
+2026-06-03 11:09:08 | DEBUG    | core.validator | CHAKALI SANDHYA RANI_DMCFSJU05093.pdf: PASS (failed: [])
+2026-06-03 11:09:08 | DEBUG    | core.stamp_detector | Ink ratio: 0.0069 (threshold: 0.01)
+2026-06-03 11:09:08 | DEBUG    | core.stamp_detector | Ink ratio: 0.0062 (threshold: 0.01)
+2026-06-03 11:09:08 | DEBUG    | core.stamp_detector | Ink ratio: 0.0100 (threshold: 0.01)
+2026-06-03 11:09:08 | DEBUG    | core.stamp_detector | Ink ratio: 0.0078 (threshold: 0.01)
+2026-06-03 11:09:08 | DEBUG    | core.stamp_detector | Ink ratio: 0.0084 (threshold: 0.01)
+2026-06-03 11:09:08 | DEBUG    | core.stamp_detector | Ink ratio: 0.0109 (threshold: 0.01)
+2026-06-03 11:09:08 | DEBUG    | core.stamp_detector | Ink ratio: 0.0091 (threshold: 0.01)
+2026-06-03 11:09:08 | DEBUG    | core.stamp_detector | Ink ratio: 0.0096 (threshold: 0.01)
+2026-06-03 11:09:09 | DEBUG    | core.stamp_detector | Ink ratio: 0.0084 (threshold: 0.01)
+2026-06-03 11:09:09 | DEBUG    | core.stamp_detector | Ink ratio: 0.0091 (threshold: 0.01)
+2026-06-03 11:09:09 | DEBUG    | core.stamp_detector | Ink ratio: 0.0078 (threshold: 0.01)
+2026-06-03 11:09:09 | DEBUG    | core.stamp_detector | Ink ratio: 0.0110 (threshold: 0.01)
+2026-06-03 11:09:09 | DEBUG    | core.processor | CHAKALI SANDHYA RANI_DMCFSJU05093.pdf: Stamp FAIL on pages [2, 5, 6]
+2026-06-03 11:09:09 | INFO     | core.processor | [9/9] CHAKALI SANDHYA RANI_DMCFSJU05093.pdf → FAIL
+2026-06-03 11:09:09 | INFO     | core.processor | Memory usage high (15066 MB). Pausing 5 seconds to let GC run…
+2026-06-03 11:09:14 | INFO     | core.processor | Generating Excel report…
+2026-06-03 11:09:14 | INFO     | core.report_generator | Report saved: D:\Pranav Work Station\Demo\Excel Output\reports\ojt_validation_report_20260603_110914.xlsx
+2026-06-03 11:09:14 | INFO     | core.processor | Report saved: ojt_validation_report_20260603_110914.xlsx
+2026-06-03 11:09:14 | INFO     | core.processor | Done! Total: 9 | Pass: 0 | Fail: 1 | Errors: 8
+2026-06-03 11:15:48 | INFO     | __main__ | OJT Checker System exited.
+2026-06-03 11:24:22 | INFO     | root | OJT Checker System v1.0.0 — logging initialised.
+2026-06-03 11:24:22 | INFO     | __main__ | Starting OJT Checker System…
+2026-06-03 11:24:37 | INFO     | core.excel_reader | Loading Excel master file: Demoojtexcel.xlsx
+2026-06-03 11:24:37 | INFO     | core.excel_reader | Excel loaded: 9 student records across 1 courses
+2026-06-03 11:24:48 | INFO     | core.processor | Output folders → corrected: D:\Pranav Work Station\Demo\Excel Output\corrected, ocr_texts: D:\Pranav Work Station\Demo\Excel Output\ocr_texts, reports: D:\Pranav Work Station\Demo\Excel Output\reports
+2026-06-03 11:24:49 | INFO     | core.pdf_reader | Found 9 PDF files in D:\Pranav Work Station\Demo\archive (5)
+2026-06-03 11:24:49 | INFO     | core.processor | Found 9 PDFs. Starting processing…
+2026-06-03 11:24:49 | INFO     | core.processor | Batch 1: processing 9 PDFs…
+2026-06-03 11:24:49 | DEBUG    | core.pdf_reader | Opened PDF: AMULYA_DMCFSJU17090 (1).pdf (7 pages)
+2026-06-03 11:24:49 | INFO     | core.processor | PDF loaded: AMULYA_DMCFSJU17090 (1).pdf
+2026-06-03 11:24:49 | DEBUG    | core.pdf_reader | Opened PDF: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf (7 pages)
+2026-06-03 11:24:49 | INFO     | core.processor | PDF loaded: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf
+2026-06-03 11:24:49 | DEBUG    | core.pdf_reader | Opened PDF: BILLA SWAPNA_DMCFSJU13644 (1).pdf (7 pages)
+2026-06-03 11:24:49 | INFO     | core.processor | PDF loaded: BILLA SWAPNA_DMCFSJU13644 (1).pdf
+2026-06-03 11:24:49 | DEBUG    | core.pdf_reader | Opened PDF: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf (7 pages)
+2026-06-03 11:24:49 | INFO     | core.processor | PDF loaded: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf
+2026-06-03 11:24:49 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:24:49 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:24:50 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:24:50 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:25:08 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:25:08 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:25:08 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:25:08 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:25:51 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'Vidhy 9', 'course_name': 'Jain University', 'enrollment_no': 'Name', 'ojt_period': 'Contact Number; mail', 'department': 'Role of Student Trainee'}
+2026-06-03 11:25:51 | INFO     | core.processor | OCR completed: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf
+2026-06-03 11:25:51 | INFO     | core.processor | Enrollment extracted: Name
+2026-06-03 11:25:51 | INFO     | core.processor | OCR text saved: B VIDHYA SAGAR_DMCFSJU10271 (1)_ocr.txt
+2026-06-03 11:25:51 | WARNING  | core.validator | No student record found for enrollment='Name', name='Vidhy 9'
+2026-06-03 11:25:51 | INFO     | core.processor | Excel record NOT found for: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf
+2026-06-03 11:25:51 | INFO     | core.processor | Validation completed: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf → ERROR
+2026-06-03 11:25:51 | DEBUG    | core.stamp_detector | Ink ratio: 0.0084 (threshold: 0.01)
+2026-06-03 11:25:51 | DEBUG    | core.stamp_detector | Ink ratio: 0.0067 (threshold: 0.01)
+2026-06-03 11:25:52 | DEBUG    | core.stamp_detector | Ink ratio: 0.0077 (threshold: 0.01)
+2026-06-03 11:25:52 | DEBUG    | core.stamp_detector | Ink ratio: 0.0069 (threshold: 0.01)
+2026-06-03 11:25:52 | DEBUG    | core.stamp_detector | Ink ratio: 0.0075 (threshold: 0.01)
+2026-06-03 11:25:52 | DEBUG    | core.stamp_detector | Ink ratio: 0.0068 (threshold: 0.01)
+2026-06-03 11:25:52 | DEBUG    | core.stamp_detector | Ink ratio: 0.0080 (threshold: 0.01)
+2026-06-03 11:25:52 | DEBUG    | core.stamp_detector | Ink ratio: 0.0064 (threshold: 0.01)
+2026-06-03 11:25:52 | DEBUG    | core.stamp_detector | Ink ratio: 0.0097 (threshold: 0.01)
+2026-06-03 11:25:52 | DEBUG    | core.stamp_detector | Ink ratio: 0.0083 (threshold: 0.01)
+2026-06-03 11:25:52 | DEBUG    | core.stamp_detector | Ink ratio: 0.0087 (threshold: 0.01)
+2026-06-03 11:25:52 | DEBUG    | core.stamp_detector | Ink ratio: 0.0066 (threshold: 0.01)
+2026-06-03 11:25:52 | DEBUG    | core.processor | B VIDHYA SAGAR_DMCFSJU10271 (1).pdf: Stamp FAIL on pages [2, 3, 4, 5, 6, 7]
+2026-06-03 11:25:52 | INFO     | core.processor | Copied original PDF to corrected folder: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf
+2026-06-03 11:25:52 | INFO     | core.processor | [1/9] B VIDHYA SAGAR_DMCFSJU10271 (1).pdf → ERROR
+2026-06-03 11:25:52 | DEBUG    | core.pdf_reader | Opened PDF: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf (7 pages)
+2026-06-03 11:25:52 | INFO     | core.processor | PDF loaded: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf
+2026-06-03 11:27:38 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'skll', 'course_name': 'manu', 'enrollment_no': 'DepartmentandJob', 'ojt_period': 'Contact Number; mail', 'department': 'Role of Student Trainee'}
+2026-06-03 11:27:38 | INFO     | core.processor | OCR completed: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf
+2026-06-03 11:27:38 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'Ammulya', 'course_name': 'shau', 'enrollment_no': 'DMcFs-ul090', 'ojt_period': 'I#/b/s5', 'department': 'Role of Student Trainee'}
+2026-06-03 11:27:38 | INFO     | core.processor | OCR completed: AMULYA_DMCFSJU17090 (1).pdf
+2026-06-03 11:27:39 | INFO     | core.processor | Enrollment extracted: DepartmentandJob
+2026-06-03 11:27:39 | INFO     | core.processor | Enrollment extracted: DMcFs-ul090
+2026-06-03 11:27:39 | INFO     | core.processor | OCR text saved: CHINTALAGIRI PAVITHRA_DMCFSJU10262_ocr.txt
+2026-06-03 11:27:39 | INFO     | core.processor | OCR text saved: AMULYA_DMCFSJU17090 (1)_ocr.txt
+2026-06-03 11:27:39 | WARNING  | core.validator | No student record found for enrollment='DepartmentandJob', name='skll'
+2026-06-03 11:27:39 | WARNING  | core.validator | No student record found for enrollment='DMcFs-ul090', name='Ammulya'
+2026-06-03 11:27:39 | INFO     | core.processor | Excel record NOT found for: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf
+2026-06-03 11:27:39 | INFO     | core.processor | Excel record NOT found for: AMULYA_DMCFSJU17090 (1).pdf
+2026-06-03 11:27:39 | INFO     | core.processor | Validation completed: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf → ERROR
+2026-06-03 11:27:39 | INFO     | core.processor | Validation completed: AMULYA_DMCFSJU17090 (1).pdf → ERROR
+2026-06-03 11:27:40 | DEBUG    | core.stamp_detector | Ink ratio: 0.0062 (threshold: 0.01)
+2026-06-03 11:27:40 | DEBUG    | core.stamp_detector | Ink ratio: 0.0075 (threshold: 0.01)
+2026-06-03 11:27:40 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': '6JL LA', 'course_name': 'Jain University', 'enrollment_no': 'DepartmentandJob', 'ojt_period': '06 |06', 'department': 'Role of Student Trainee'}
+2026-06-03 11:27:40 | INFO     | core.processor | OCR completed: BILLA SWAPNA_DMCFSJU13644 (1).pdf
+2026-06-03 11:27:40 | DEBUG    | core.stamp_detector | Ink ratio: 0.0033 (threshold: 0.01)
+2026-06-03 11:27:40 | DEBUG    | core.stamp_detector | Ink ratio: 0.0035 (threshold: 0.01)
+2026-06-03 11:27:41 | DEBUG    | core.stamp_detector | Ink ratio: 0.0077 (threshold: 0.01)
+2026-06-03 11:27:41 | DEBUG    | core.stamp_detector | Ink ratio: 0.0074 (threshold: 0.01)
+2026-06-03 11:27:41 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 11:27:41 | DEBUG    | core.stamp_detector | Ink ratio: 0.0120 (threshold: 0.01)
+2026-06-03 11:27:41 | DEBUG    | core.stamp_detector | Ink ratio: 0.0076 (threshold: 0.01)
+2026-06-03 11:27:41 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 11:27:42 | DEBUG    | core.stamp_detector | Ink ratio: 0.0096 (threshold: 0.01)
+2026-06-03 11:27:42 | DEBUG    | core.stamp_detector | Ink ratio: 0.0100 (threshold: 0.01)
+2026-06-03 11:27:42 | DEBUG    | core.stamp_detector | Ink ratio: 0.0068 (threshold: 0.01)
+2026-06-03 11:27:42 | INFO     | core.processor | Enrollment extracted: DepartmentandJob
+2026-06-03 11:27:42 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 11:27:42 | DEBUG    | core.stamp_detector | Ink ratio: 0.0087 (threshold: 0.01)
+2026-06-03 11:27:42 | DEBUG    | core.stamp_detector | Ink ratio: 0.0058 (threshold: 0.01)
+2026-06-03 11:27:42 | DEBUG    | core.stamp_detector | Ink ratio: 0.0072 (threshold: 0.01)
+2026-06-03 11:27:42 | DEBUG    | core.stamp_detector | Ink ratio: 0.0108 (threshold: 0.01)
+2026-06-03 11:27:42 | DEBUG    | core.stamp_detector | Ink ratio: 0.0109 (threshold: 0.01)
+2026-06-03 11:27:42 | DEBUG    | core.stamp_detector | Ink ratio: 0.0100 (threshold: 0.01)
+2026-06-03 11:27:42 | DEBUG    | core.processor | CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf: Stamp FAIL on pages [2, 3, 6]
+2026-06-03 11:27:42 | DEBUG    | core.stamp_detector | Ink ratio: 0.0097 (threshold: 0.01)
+2026-06-03 11:27:42 | DEBUG    | core.stamp_detector | Ink ratio: 0.0117 (threshold: 0.01)
+2026-06-03 11:27:43 | INFO     | core.processor | Copied original PDF to corrected folder: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf
+2026-06-03 11:27:43 | INFO     | core.processor | OCR text saved: BILLA SWAPNA_DMCFSJU13644 (1)_ocr.txt
+2026-06-03 11:27:43 | DEBUG    | core.stamp_detector | Ink ratio: 0.0078 (threshold: 0.01)
+2026-06-03 11:27:43 | DEBUG    | core.stamp_detector | Ink ratio: 0.0074 (threshold: 0.01)
+2026-06-03 11:27:43 | DEBUG    | core.processor | AMULYA_DMCFSJU17090 (1).pdf: Stamp FAIL on pages [2, 3, 4, 7]
+2026-06-03 11:27:43 | INFO     | core.processor | Copied original PDF to corrected folder: AMULYA_DMCFSJU17090 (1).pdf
+2026-06-03 11:27:43 | INFO     | core.processor | [2/9] CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf → ERROR
+2026-06-03 11:27:43 | DEBUG    | core.pdf_reader | Opened PDF: MD MAHATABALI_DMCFSJU06404.pdf (7 pages)
+2026-06-03 11:27:43 | INFO     | core.processor | PDF loaded: MD MAHATABALI_DMCFSJU06404.pdf
+2026-06-03 11:27:43 | WARNING  | core.validator | No student record found for enrollment='DepartmentandJob', name='6JL LA'
+2026-06-03 11:27:43 | DEBUG    | core.pdf_reader | Opened PDF: PAWAR JYOTHI BAI_DMCFSJU08004.pdf (7 pages)
+2026-06-03 11:27:43 | INFO     | core.processor | PDF loaded: PAWAR JYOTHI BAI_DMCFSJU08004.pdf
+2026-06-03 11:27:43 | INFO     | core.processor | [3/9] AMULYA_DMCFSJU17090 (1).pdf → ERROR
+2026-06-03 11:27:43 | INFO     | core.processor | Excel record NOT found for: BILLA SWAPNA_DMCFSJU13644 (1).pdf
+2026-06-03 11:27:45 | INFO     | core.processor | Validation completed: BILLA SWAPNA_DMCFSJU13644 (1).pdf → ERROR
+2026-06-03 11:27:45 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 11:27:45 | DEBUG    | core.stamp_detector | Ink ratio: 0.0056 (threshold: 0.01)
+2026-06-03 11:27:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0073 (threshold: 0.01)
+2026-06-03 11:27:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0087 (threshold: 0.01)
+2026-06-03 11:27:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0064 (threshold: 0.01)
+2026-06-03 11:27:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0066 (threshold: 0.01)
+2026-06-03 11:27:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0086 (threshold: 0.01)
+2026-06-03 11:27:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0105 (threshold: 0.01)
+2026-06-03 11:27:47 | DEBUG    | core.stamp_detector | Ink ratio: 0.0113 (threshold: 0.01)
+2026-06-03 11:27:47 | DEBUG    | core.stamp_detector | Ink ratio: 0.0097 (threshold: 0.01)
+2026-06-03 11:27:47 | DEBUG    | core.stamp_detector | Ink ratio: 0.0105 (threshold: 0.01)
+2026-06-03 11:27:47 | DEBUG    | core.stamp_detector | Ink ratio: 0.0133 (threshold: 0.01)
+2026-06-03 11:27:47 | DEBUG    | core.processor | BILLA SWAPNA_DMCFSJU13644 (1).pdf: Stamp FAIL on pages [2, 3, 4]
+2026-06-03 11:27:48 | INFO     | core.processor | Copied original PDF to corrected folder: BILLA SWAPNA_DMCFSJU13644 (1).pdf
+2026-06-03 11:27:48 | INFO     | core.processor | [4/9] BILLA SWAPNA_DMCFSJU13644 (1).pdf → ERROR
+2026-06-03 11:27:48 | DEBUG    | core.pdf_reader | Opened PDF: SANGMESH_DMCFSJU06419.pdf (7 pages)
+2026-06-03 11:27:48 | INFO     | core.processor | PDF loaded: SANGMESH_DMCFSJU06419.pdf
+2026-06-03 11:27:58 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'CHAkA LI SANDHYA RANZ_', 'course_name': 'Jain University', 'enrollment_no': 'DMCFSJU8509', 'ojt_period': 'Contact Number; mail', 'department': 'Role of Student Trainee'}
+2026-06-03 11:27:58 | INFO     | core.processor | OCR completed: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf
+2026-06-03 11:27:58 | INFO     | core.processor | Enrollment extracted: DMCFSJU8509
+2026-06-03 11:27:58 | INFO     | core.processor | OCR text saved: CHAKALI SANDHYA RANI_DMCFSJU05093_ocr.txt
+2026-06-03 11:27:58 | DEBUG    | core.validator | Fuzzy name match 'CHAkA LI SANDHYA RANZ_' → 'CHAKALI SANDHYA RANI' (score=85.71428571428572)
+2026-06-03 11:27:58 | DEBUG    | core.validator | CHAKALI SANDHYA RANI_DMCFSJU05093.pdf: PASS (failed: [])
+2026-06-03 11:27:58 | INFO     | core.processor | Excel record matched: DMCFSJU8509
+2026-06-03 11:27:58 | INFO     | core.processor | Validation completed: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf → PASS
+2026-06-03 11:27:58 | DEBUG    | core.stamp_detector | Ink ratio: 0.0069 (threshold: 0.01)
+2026-06-03 11:27:58 | DEBUG    | core.stamp_detector | Ink ratio: 0.0062 (threshold: 0.01)
+2026-06-03 11:27:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0100 (threshold: 0.01)
+2026-06-03 11:27:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0078 (threshold: 0.01)
+2026-06-03 11:27:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0084 (threshold: 0.01)
+2026-06-03 11:27:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0109 (threshold: 0.01)
+2026-06-03 11:27:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0091 (threshold: 0.01)
+2026-06-03 11:27:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0096 (threshold: 0.01)
+2026-06-03 11:27:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0084 (threshold: 0.01)
+2026-06-03 11:27:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0091 (threshold: 0.01)
+2026-06-03 11:28:00 | DEBUG    | core.stamp_detector | Ink ratio: 0.0078 (threshold: 0.01)
+2026-06-03 11:28:00 | DEBUG    | core.stamp_detector | Ink ratio: 0.0110 (threshold: 0.01)
+2026-06-03 11:28:00 | DEBUG    | core.processor | CHAKALI SANDHYA RANI_DMCFSJU05093.pdf: Stamp FAIL on pages [2, 5, 6]
+2026-06-03 11:28:00 | INFO     | core.processor | Copied original PDF to corrected folder: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf
+2026-06-03 11:28:00 | INFO     | core.processor | [5/9] CHAKALI SANDHYA RANI_DMCFSJU05093.pdf → FAIL
+2026-06-03 11:28:00 | DEBUG    | core.pdf_reader | Opened PDF: VANAM LAXMI_DMCFSJU05080.pdf (7 pages)
+2026-06-03 11:28:00 | INFO     | core.processor | PDF loaded: VANAM LAXMI_DMCFSJU05080.pdf
+2026-06-03 11:28:59 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'Md Malitabali', 'course_name': 'Monufactusi _', 'enrollment_no': '', 'ojt_period': 'Contact Number; mail', 'department': 'Role of Stdent Trainee'}
+2026-06-03 11:28:59 | INFO     | core.processor | OCR completed: MD MAHATABALI_DMCFSJU06404.pdf
+2026-06-03 11:28:59 | INFO     | core.processor | Enrollment extracted: 
+2026-06-03 11:28:59 | INFO     | core.processor | OCR text saved: MD MAHATABALI_DMCFSJU06404_ocr.txt
+2026-06-03 11:28:59 | WARNING  | core.validator | No student record found for enrollment='', name='Md Malitabali'
+2026-06-03 11:28:59 | INFO     | core.processor | Excel record NOT found for: MD MAHATABALI_DMCFSJU06404.pdf
+2026-06-03 11:28:59 | INFO     | core.processor | Validation completed: MD MAHATABALI_DMCFSJU06404.pdf → ERROR
+2026-06-03 11:28:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0114 (threshold: 0.01)
+2026-06-03 11:28:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0117 (threshold: 0.01)
+2026-06-03 11:28:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0073 (threshold: 0.01)
+2026-06-03 11:28:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0061 (threshold: 0.01)
+2026-06-03 11:29:00 | DEBUG    | core.stamp_detector | Ink ratio: 0.0075 (threshold: 0.01)
+2026-06-03 11:29:00 | DEBUG    | core.stamp_detector | Ink ratio: 0.0078 (threshold: 0.01)
+2026-06-03 11:29:00 | DEBUG    | core.stamp_detector | Ink ratio: 0.0114 (threshold: 0.01)
+2026-06-03 11:29:00 | DEBUG    | core.stamp_detector | Ink ratio: 0.0138 (threshold: 0.01)
+2026-06-03 11:29:00 | DEBUG    | core.stamp_detector | Ink ratio: 0.0081 (threshold: 0.01)
+2026-06-03 11:29:00 | DEBUG    | core.stamp_detector | Ink ratio: 0.0055 (threshold: 0.01)
+2026-06-03 11:29:00 | DEBUG    | core.stamp_detector | Ink ratio: 0.0110 (threshold: 0.01)
+2026-06-03 11:29:00 | DEBUG    | core.stamp_detector | Ink ratio: 0.0127 (threshold: 0.01)
+2026-06-03 11:29:00 | DEBUG    | core.processor | MD MAHATABALI_DMCFSJU06404.pdf: Stamp FAIL on pages [3, 4, 6]
+2026-06-03 11:29:01 | INFO     | core.processor | Copied original PDF to corrected folder: MD MAHATABALI_DMCFSJU06404.pdf
+2026-06-03 11:29:01 | INFO     | core.processor | [6/9] MD MAHATABALI_DMCFSJU06404.pdf → ERROR
+2026-06-03 11:29:22 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': '9ola906482', 'course_name': '', 'enrollment_no': '', 'ojt_period': '', 'department': ''}
+2026-06-03 11:29:22 | INFO     | core.processor | OCR completed: VANAM LAXMI_DMCFSJU05080.pdf
+2026-06-03 11:29:22 | INFO     | core.processor | Enrollment extracted: 
+2026-06-03 11:29:22 | INFO     | core.processor | OCR text saved: VANAM LAXMI_DMCFSJU05080_ocr.txt
+2026-06-03 11:29:22 | WARNING  | core.validator | No student record found for enrollment='', name='9ola906482'
+2026-06-03 11:29:22 | INFO     | core.processor | Excel record NOT found for: VANAM LAXMI_DMCFSJU05080.pdf
+2026-06-03 11:29:22 | INFO     | core.processor | Validation completed: VANAM LAXMI_DMCFSJU05080.pdf → ERROR
+2026-06-03 11:29:22 | DEBUG    | core.stamp_detector | Ink ratio: 0.0066 (threshold: 0.01)
+2026-06-03 11:29:22 | DEBUG    | core.stamp_detector | Ink ratio: 0.0081 (threshold: 0.01)
+2026-06-03 11:29:24 | DEBUG    | core.stamp_detector | Ink ratio: 0.0101 (threshold: 0.01)
+2026-06-03 11:29:24 | DEBUG    | core.stamp_detector | Ink ratio: 0.0096 (threshold: 0.01)
+2026-06-03 11:29:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0122 (threshold: 0.01)
+2026-06-03 11:29:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0118 (threshold: 0.01)
+2026-06-03 11:29:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0081 (threshold: 0.01)
+2026-06-03 11:29:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0117 (threshold: 0.01)
+2026-06-03 11:29:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0092 (threshold: 0.01)
+2026-06-03 11:29:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0099 (threshold: 0.01)
+2026-06-03 11:29:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0074 (threshold: 0.01)
+2026-06-03 11:29:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 11:29:25 | DEBUG    | core.processor | VANAM LAXMI_DMCFSJU05080.pdf: Stamp FAIL on pages [2, 6, 7]
+2026-06-03 11:29:25 | INFO     | core.processor | Copied original PDF to corrected folder: VANAM LAXMI_DMCFSJU05080.pdf
+2026-06-03 11:29:26 | INFO     | core.processor | [7/9] VANAM LAXMI_DMCFSJU05080.pdf → ERROR
+2026-06-03 11:29:53 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'Skill Course Nane', 'course_name': 'Jain University', 'enrollment_no': 'DepartmentandJob', 'ojt_period': '28 /10J4+a', 'department': 'Role of Student Trainee'}
+2026-06-03 11:29:53 | INFO     | core.processor | OCR completed: PAWAR JYOTHI BAI_DMCFSJU08004.pdf
+2026-06-03 11:29:53 | INFO     | core.processor | Enrollment extracted: DepartmentandJob
+2026-06-03 11:29:53 | INFO     | core.processor | OCR text saved: PAWAR JYOTHI BAI_DMCFSJU08004_ocr.txt
+2026-06-03 11:29:53 | WARNING  | core.validator | No student record found for enrollment='DepartmentandJob', name='Skill Course Nane'
+2026-06-03 11:29:53 | INFO     | core.processor | Excel record NOT found for: PAWAR JYOTHI BAI_DMCFSJU08004.pdf
+2026-06-03 11:29:53 | INFO     | core.processor | Validation completed: PAWAR JYOTHI BAI_DMCFSJU08004.pdf → ERROR
+2026-06-03 11:29:53 | DEBUG    | core.stamp_detector | Ink ratio: 0.0105 (threshold: 0.01)
+2026-06-03 11:29:53 | DEBUG    | core.stamp_detector | Ink ratio: 0.0103 (threshold: 0.01)
+2026-06-03 11:29:54 | DEBUG    | core.stamp_detector | Ink ratio: 0.0087 (threshold: 0.01)
+2026-06-03 11:29:54 | DEBUG    | core.stamp_detector | Ink ratio: 0.0078 (threshold: 0.01)
+2026-06-03 11:29:54 | DEBUG    | core.stamp_detector | Ink ratio: 0.0091 (threshold: 0.01)
+2026-06-03 11:29:54 | DEBUG    | core.stamp_detector | Ink ratio: 0.0073 (threshold: 0.01)
+2026-06-03 11:29:54 | DEBUG    | core.stamp_detector | Ink ratio: 0.0110 (threshold: 0.01)
+2026-06-03 11:29:54 | DEBUG    | core.stamp_detector | Ink ratio: 0.0134 (threshold: 0.01)
+2026-06-03 11:29:54 | DEBUG    | core.stamp_detector | Ink ratio: 0.0084 (threshold: 0.01)
+2026-06-03 11:29:54 | DEBUG    | core.stamp_detector | Ink ratio: 0.0067 (threshold: 0.01)
+2026-06-03 11:29:54 | DEBUG    | core.stamp_detector | Ink ratio: 0.0121 (threshold: 0.01)
+2026-06-03 11:29:54 | DEBUG    | core.stamp_detector | Ink ratio: 0.0144 (threshold: 0.01)
+2026-06-03 11:29:54 | DEBUG    | core.processor | PAWAR JYOTHI BAI_DMCFSJU08004.pdf: Stamp FAIL on pages [3, 4, 6]
+2026-06-03 11:29:54 | INFO     | core.processor | Copied original PDF to corrected folder: PAWAR JYOTHI BAI_DMCFSJU08004.pdf
+2026-06-03 11:29:54 | INFO     | core.processor | [8/9] PAWAR JYOTHI BAI_DMCFSJU08004.pdf → ERROR
+2026-06-03 11:29:56 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'Jain University', 'course_name': 'Jain University', 'enrollment_no': 'DeparcmentandJob', 'ojt_period': '', 'department': ''}
+2026-06-03 11:29:56 | INFO     | core.processor | OCR completed: SANGMESH_DMCFSJU06419.pdf
+2026-06-03 11:29:56 | INFO     | core.processor | Enrollment extracted: DeparcmentandJob
+2026-06-03 11:29:56 | INFO     | core.processor | OCR text saved: SANGMESH_DMCFSJU06419_ocr.txt
+2026-06-03 11:29:56 | WARNING  | core.validator | No student record found for enrollment='DeparcmentandJob', name='Jain University'
+2026-06-03 11:29:56 | INFO     | core.processor | Excel record NOT found for: SANGMESH_DMCFSJU06419.pdf
+2026-06-03 11:29:56 | INFO     | core.processor | Validation completed: SANGMESH_DMCFSJU06419.pdf → ERROR
+2026-06-03 11:29:56 | DEBUG    | core.stamp_detector | Ink ratio: 0.0061 (threshold: 0.01)
+2026-06-03 11:29:56 | DEBUG    | core.stamp_detector | Ink ratio: 0.0073 (threshold: 0.01)
+2026-06-03 11:29:56 | DEBUG    | core.stamp_detector | Ink ratio: 0.0036 (threshold: 0.01)
+2026-06-03 11:29:56 | DEBUG    | core.stamp_detector | Ink ratio: 0.0030 (threshold: 0.01)
+2026-06-03 11:29:56 | DEBUG    | core.stamp_detector | Ink ratio: 0.0081 (threshold: 0.01)
+2026-06-03 11:29:56 | DEBUG    | core.stamp_detector | Ink ratio: 0.0058 (threshold: 0.01)
+2026-06-03 11:29:56 | DEBUG    | core.stamp_detector | Ink ratio: 0.0076 (threshold: 0.01)
+2026-06-03 11:29:56 | DEBUG    | core.stamp_detector | Ink ratio: 0.0070 (threshold: 0.01)
+2026-06-03 11:29:56 | DEBUG    | core.stamp_detector | Ink ratio: 0.0066 (threshold: 0.01)
+2026-06-03 11:29:56 | DEBUG    | core.stamp_detector | Ink ratio: 0.0074 (threshold: 0.01)
+2026-06-03 11:29:57 | DEBUG    | core.stamp_detector | Ink ratio: 0.0049 (threshold: 0.01)
+2026-06-03 11:29:57 | DEBUG    | core.stamp_detector | Ink ratio: 0.0093 (threshold: 0.01)
+2026-06-03 11:29:57 | DEBUG    | core.processor | SANGMESH_DMCFSJU06419.pdf: Stamp FAIL on pages [2, 3, 4, 5, 6, 7]
+2026-06-03 11:29:57 | INFO     | core.processor | Copied original PDF to corrected folder: SANGMESH_DMCFSJU06419.pdf
+2026-06-03 11:29:57 | INFO     | core.processor | [9/9] SANGMESH_DMCFSJU06419.pdf → ERROR
+2026-06-03 11:29:57 | INFO     | core.processor | Memory usage high (15819 MB). Pausing 5 seconds to let GC run…
+2026-06-03 11:30:02 | INFO     | core.processor | Generating Excel report…
+2026-06-03 11:30:02 | INFO     | core.report_generator | Report saved: D:\Pranav Work Station\Demo\Excel Output\reports\ojt_validation_report_20260603_113002.xlsx
+2026-06-03 11:30:02 | INFO     | core.processor | Report saved: ojt_validation_report_20260603_113002.xlsx
+2026-06-03 11:30:02 | INFO     | core.processor | Report generated: ojt_validation_report_20260603_113002.xlsx
+2026-06-03 11:30:02 | INFO     | core.processor | Done! Total: 9 | Pass: 0 | Fail: 1 | Errors: 8
+2026-06-03 11:30:07 | INFO     | __main__ | OJT Checker System exited.
+2026-06-03 11:37:34 | INFO     | root | OJT Checker System v1.0.0 — logging initialised.
+2026-06-03 11:37:34 | INFO     | __main__ | Starting OJT Checker System…
+2026-06-03 11:37:46 | INFO     | core.excel_reader | Loading Excel master file: Demoojtexcel.xlsx
+2026-06-03 11:37:46 | INFO     | core.excel_reader | Excel loaded: 9 student records across 1 courses
+2026-06-03 11:37:56 | INFO     | core.processor | Output folders → corrected: D:\Pranav Work Station\Demo\Excel Output\corrected, ocr_texts: D:\Pranav Work Station\Demo\Excel Output\ocr_texts, reports: D:\Pranav Work Station\Demo\Excel Output\reports
+2026-06-03 11:37:56 | INFO     | core.pdf_reader | Found 9 PDF files in D:\Pranav Work Station\Demo\archive (5)
+2026-06-03 11:37:56 | INFO     | core.processor | Found 9 PDFs. Starting processing…
+2026-06-03 11:37:56 | INFO     | core.processor | Batch 1: processing 9 PDFs…
+2026-06-03 11:37:56 | INFO     | core.processor | Filename Enrollment: DMCFSJU17090
+2026-06-03 11:37:56 | INFO     | core.processor | Filename Enrollment: DMCFSJU10271
+2026-06-03 11:37:56 | INFO     | core.processor | Filename Enrollment: DMCFSJU13644
+2026-06-03 11:37:56 | INFO     | core.processor | Filename Enrollment: DMCFSJU05093
+2026-06-03 11:37:56 | INFO     | core.processor | Excel Match: Found
+2026-06-03 11:37:56 | INFO     | core.processor | Excel Match: Found
+2026-06-03 11:37:56 | INFO     | core.processor | Excel Match: Found
+2026-06-03 11:37:56 | INFO     | core.processor | Excel Match: Found
+2026-06-03 11:37:56 | DEBUG    | core.pdf_reader | Opened PDF: AMULYA_DMCFSJU17090 (1).pdf (7 pages)
+2026-06-03 11:37:56 | INFO     | core.processor | PDF loaded: AMULYA_DMCFSJU17090 (1).pdf
+2026-06-03 11:37:56 | DEBUG    | core.pdf_reader | Opened PDF: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf (7 pages)
+2026-06-03 11:37:56 | INFO     | core.processor | PDF loaded: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf
+2026-06-03 11:37:56 | DEBUG    | core.pdf_reader | Opened PDF: BILLA SWAPNA_DMCFSJU13644 (1).pdf (7 pages)
+2026-06-03 11:37:56 | INFO     | core.processor | PDF loaded: BILLA SWAPNA_DMCFSJU13644 (1).pdf
+2026-06-03 11:37:56 | DEBUG    | core.pdf_reader | Opened PDF: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf (7 pages)
+2026-06-03 11:37:56 | INFO     | core.processor | PDF loaded: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf
+2026-06-03 11:37:57 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:37:57 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:37:57 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:37:58 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:38:13 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:38:13 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:38:13 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:38:13 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:38:58 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': '6JL LA', 'course_name': 'Jain University', 'enrollment_no': 'DMCFSJU13644', 'ojt_period': '06 |06', 'department': 'Role of Student Trainee'}
+2026-06-03 11:38:58 | INFO     | core.processor | OCR completed: BILLA SWAPNA_DMCFSJU13644 (1).pdf
+2026-06-03 11:38:58 | INFO     | core.processor | OCR Enrollment: DMCFSJU13644
+2026-06-03 11:38:58 | INFO     | core.processor | OCR text saved: BILLA SWAPNA_DMCFSJU13644 (1)_ocr.txt
+2026-06-03 11:38:58 | DEBUG    | core.validator | BILLA SWAPNA_DMCFSJU13644 (1).pdf: PASS (failed: [])
+2026-06-03 11:38:58 | INFO     | core.processor |   student_name: PASS
+2026-06-03 11:38:58 | INFO     | core.processor |   course_name: PASS
+2026-06-03 11:38:58 | INFO     | core.processor |   ojt_period: PASS
+2026-06-03 11:38:58 | INFO     | core.processor |   enrollment_no: PASS
+2026-06-03 11:38:58 | INFO     | core.processor | Validation completed: BILLA SWAPNA_DMCFSJU13644 (1).pdf → PASS
+2026-06-03 11:38:58 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 11:38:58 | DEBUG    | core.stamp_detector | Ink ratio: 0.0056 (threshold: 0.01)
+2026-06-03 11:38:58 | DEBUG    | core.stamp_detector | Ink ratio: 0.0073 (threshold: 0.01)
+2026-06-03 11:38:58 | DEBUG    | core.stamp_detector | Ink ratio: 0.0087 (threshold: 0.01)
+2026-06-03 11:38:58 | DEBUG    | core.stamp_detector | Ink ratio: 0.0064 (threshold: 0.01)
+2026-06-03 11:38:58 | DEBUG    | core.stamp_detector | Ink ratio: 0.0066 (threshold: 0.01)
+2026-06-03 11:38:58 | DEBUG    | core.stamp_detector | Ink ratio: 0.0086 (threshold: 0.01)
+2026-06-03 11:38:58 | DEBUG    | core.stamp_detector | Ink ratio: 0.0105 (threshold: 0.01)
+2026-06-03 11:38:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0113 (threshold: 0.01)
+2026-06-03 11:38:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0097 (threshold: 0.01)
+2026-06-03 11:38:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0105 (threshold: 0.01)
+2026-06-03 11:38:59 | DEBUG    | core.stamp_detector | Ink ratio: 0.0133 (threshold: 0.01)
+2026-06-03 11:38:59 | DEBUG    | core.processor | BILLA SWAPNA_DMCFSJU13644 (1).pdf: Stamp FAIL on pages [2, 3, 4]
+2026-06-03 11:38:59 | INFO     | core.processor | Corrected PDF Saved: D:\Pranav Work Station\Demo\Excel Output\corrected\BILLA SWAPNA_DMCFSJU13644 (1).pdf
+2026-06-03 11:38:59 | INFO     | core.processor | Filename Enrollment: DMCFSJU10262
+2026-06-03 11:38:59 | INFO     | core.processor | [1/9] BILLA SWAPNA_DMCFSJU13644 (1).pdf → FAIL
+2026-06-03 11:38:59 | INFO     | core.processor | Excel Match: Found
+2026-06-03 11:38:59 | DEBUG    | core.pdf_reader | Opened PDF: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf (7 pages)
+2026-06-03 11:38:59 | INFO     | core.processor | PDF loaded: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf
+2026-06-03 11:41:48 | INFO     | root | OJT Checker System v1.0.0 — logging initialised.
+2026-06-03 11:41:48 | INFO     | __main__ | Starting OJT Checker System…
+2026-06-03 11:42:00 | INFO     | core.excel_reader | Loading Excel master file: Demoojtexcel.xlsx
+2026-06-03 11:42:00 | INFO     | core.excel_reader | Excel loaded: 9 student records across 1 courses
+2026-06-03 11:42:18 | INFO     | core.processor | Output folders → corrected: D:\Pranav Work Station\Demo\Excel Output\corrected, ocr_texts: D:\Pranav Work Station\Demo\Excel Output\ocr_texts, reports: D:\Pranav Work Station\Demo\Excel Output\reports
+2026-06-03 11:42:18 | INFO     | core.pdf_reader | Found 9 PDF files in D:\Pranav Work Station\Demo\archive (5)
+2026-06-03 11:42:18 | INFO     | core.processor | Found 9 PDFs. Starting processing…
+2026-06-03 11:42:18 | INFO     | core.processor | Batch 1: processing 9 PDFs…
+2026-06-03 11:42:18 | INFO     | core.processor | Filename Enrollment: DMCFSJU17090
+2026-06-03 11:42:18 | INFO     | core.processor | Filename Enrollment: DMCFSJU10271
+2026-06-03 11:42:18 | INFO     | core.processor | Filename Enrollment: DMCFSJU13644
+2026-06-03 11:42:18 | INFO     | core.processor | Filename Enrollment: DMCFSJU05093
+2026-06-03 11:42:18 | INFO     | core.processor | Excel Match: Found
+2026-06-03 11:42:19 | INFO     | core.processor | Excel Match: Found
+2026-06-03 11:42:19 | INFO     | core.processor | Excel Match: Found
+2026-06-03 11:42:19 | INFO     | core.processor | Excel Match: Found
+2026-06-03 11:42:19 | DEBUG    | core.pdf_reader | Opened PDF: AMULYA_DMCFSJU17090 (1).pdf (7 pages)
+2026-06-03 11:42:19 | INFO     | core.processor | PDF loaded: AMULYA_DMCFSJU17090 (1).pdf
+2026-06-03 11:42:19 | DEBUG    | core.pdf_reader | Opened PDF: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf (7 pages)
+2026-06-03 11:42:19 | INFO     | core.processor | PDF loaded: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf
+2026-06-03 11:42:19 | DEBUG    | core.pdf_reader | Opened PDF: BILLA SWAPNA_DMCFSJU13644 (1).pdf (7 pages)
+2026-06-03 11:42:19 | INFO     | core.processor | PDF loaded: BILLA SWAPNA_DMCFSJU13644 (1).pdf
+2026-06-03 11:42:19 | DEBUG    | core.pdf_reader | Opened PDF: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf (7 pages)
+2026-06-03 11:42:19 | INFO     | core.processor | PDF loaded: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf
+2026-06-03 11:42:19 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:42:19 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:42:20 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:42:20 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 11:42:35 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:42:35 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:42:35 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:42:35 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 11:43:24 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': '6JL LA', 'course_name': 'Jain University', 'enrollment_no': 'DMCFSJU13644', 'ojt_period': '06 |06', 'department': 'Role of Student Trainee'}
+2026-06-03 11:43:24 | INFO     | core.processor | OCR completed: BILLA SWAPNA_DMCFSJU13644 (1).pdf
+2026-06-03 11:43:25 | INFO     | core.processor | OCR Enrollment: DMCFSJU13644
+2026-06-03 11:43:25 | INFO     | core.processor | OCR text saved: BILLA SWAPNA_DMCFSJU13644 (1)_ocr.txt
+2026-06-03 11:43:25 | DEBUG    | core.validator | BILLA SWAPNA_DMCFSJU13644 (1).pdf: PASS (failed: [])
+2026-06-03 11:43:25 | INFO     | core.processor |   student_name: PASS
+2026-06-03 11:43:25 | INFO     | core.processor |   course_name: PASS
+2026-06-03 11:43:25 | INFO     | core.processor |   ojt_period: PASS
+2026-06-03 11:43:25 | INFO     | core.processor |   enrollment_no: PASS
+2026-06-03 11:43:25 | INFO     | core.processor | Validation completed: BILLA SWAPNA_DMCFSJU13644 (1).pdf → PASS
+2026-06-03 11:43:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 11:43:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0056 (threshold: 0.01)
+2026-06-03 11:43:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0073 (threshold: 0.01)
+2026-06-03 11:43:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0087 (threshold: 0.01)
+2026-06-03 11:43:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0064 (threshold: 0.01)
+2026-06-03 11:43:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0066 (threshold: 0.01)
+2026-06-03 11:43:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0086 (threshold: 0.01)
+2026-06-03 11:43:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0105 (threshold: 0.01)
+2026-06-03 11:43:26 | DEBUG    | core.stamp_detector | Ink ratio: 0.0113 (threshold: 0.01)
+2026-06-03 11:43:26 | DEBUG    | core.stamp_detector | Ink ratio: 0.0097 (threshold: 0.01)
+2026-06-03 11:43:26 | DEBUG    | core.stamp_detector | Ink ratio: 0.0105 (threshold: 0.01)
+2026-06-03 11:43:26 | DEBUG    | core.stamp_detector | Ink ratio: 0.0133 (threshold: 0.01)
+2026-06-03 11:43:26 | DEBUG    | core.processor | BILLA SWAPNA_DMCFSJU13644 (1).pdf: Stamp FAIL on pages [2, 3, 4]
+2026-06-03 11:43:26 | INFO     | core.processor | Corrected PDF Saved: D:\Pranav Work Station\Demo\Excel Output\corrected\BILLA SWAPNA_DMCFSJU13644 (1).pdf
+2026-06-03 11:43:26 | INFO     | core.processor | Filename Enrollment: DMCFSJU10262
+2026-06-03 11:43:26 | INFO     | core.processor | [1/9] BILLA SWAPNA_DMCFSJU13644 (1).pdf → FAIL
+2026-06-03 11:43:26 | INFO     | core.processor | Excel Match: Found
+2026-06-03 11:43:26 | DEBUG    | core.pdf_reader | Opened PDF: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf (7 pages)
+2026-06-03 11:43:26 | INFO     | core.processor | PDF loaded: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf
+2026-06-03 11:43:54 | INFO     | core.processor | Cancellation requested…
+2026-06-03 11:44:02 | INFO     | __main__ | OJT Checker System exited.
+2026-06-03 14:48:11 | INFO     | root | OJT Checker System v1.0.0 — logging initialised.
+2026-06-03 14:48:11 | INFO     | __main__ | Starting OJT Checker System…
+2026-06-03 14:48:24 | INFO     | core.excel_reader | Loading Excel master file: Demoojtexcel.xlsx
+2026-06-03 14:48:24 | INFO     | core.excel_reader | Excel loaded: 9 student records across 1 courses
+2026-06-03 14:48:41 | INFO     | core.processor | Output folders → corrected: D:\Pranav Work Station\Demo\Excel Output\corrected, ocr_texts: D:\Pranav Work Station\Demo\Excel Output\ocr_texts, reports: D:\Pranav Work Station\Demo\Excel Output\reports
+2026-06-03 14:48:41 | INFO     | core.pdf_reader | Found 9 PDF files in D:\Pranav Work Station\Demo\archive (5)
+2026-06-03 14:48:41 | INFO     | core.processor | Found 9 PDFs. Starting processing…
+2026-06-03 14:48:41 | INFO     | core.processor | Batch 1: processing 9 PDFs…
+2026-06-03 14:48:41 | INFO     | core.processor | Filename Enrollment: DMCFSJU17090
+2026-06-03 14:48:41 | INFO     | core.processor | Filename Enrollment: DMCFSJU10271
+2026-06-03 14:48:41 | INFO     | core.processor | Filename Enrollment: DMCFSJU13644
+2026-06-03 14:48:41 | INFO     | core.processor | Filename Enrollment: DMCFSJU05093
+2026-06-03 14:48:41 | INFO     | core.processor | Excel Match: Found
+2026-06-03 14:48:41 | INFO     | core.processor | Excel Match: Found
+2026-06-03 14:48:41 | INFO     | core.processor | Excel Match: Found
+2026-06-03 14:48:41 | INFO     | core.processor | Excel Match: Found
+2026-06-03 14:48:41 | DEBUG    | core.pdf_reader | Opened PDF: AMULYA_DMCFSJU17090 (1).pdf (7 pages)
+2026-06-03 14:48:41 | INFO     | core.processor | PDF loaded: AMULYA_DMCFSJU17090 (1).pdf
+2026-06-03 14:48:41 | DEBUG    | core.pdf_reader | Opened PDF: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf (7 pages)
+2026-06-03 14:48:41 | INFO     | core.processor | PDF loaded: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf
+2026-06-03 14:48:41 | DEBUG    | core.pdf_reader | Opened PDF: BILLA SWAPNA_DMCFSJU13644 (1).pdf (7 pages)
+2026-06-03 14:48:41 | INFO     | core.processor | PDF loaded: BILLA SWAPNA_DMCFSJU13644 (1).pdf
+2026-06-03 14:48:41 | DEBUG    | core.pdf_reader | Opened PDF: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf (7 pages)
+2026-06-03 14:48:41 | INFO     | core.processor | PDF loaded: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf
+2026-06-03 14:48:41 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 14:48:42 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 14:48:42 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 14:48:43 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 14:49:07 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 14:49:07 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 14:49:07 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 14:49:07 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 14:51:11 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'Ammulya', 'course_name': 'shau', 'enrollment_no': 'DMCFSJU17090', 'ojt_period': 'I#/b/s5', 'department': 'Role of Student Trainee'}
+2026-06-03 14:51:11 | INFO     | core.processor | OCR completed: AMULYA_DMCFSJU17090 (1).pdf
+2026-06-03 14:51:11 | INFO     | core.processor | OCR Enrollment: DMCFSJU17090
+2026-06-03 14:51:11 | INFO     | core.processor | OCR text saved: AMULYA_DMCFSJU17090 (1)_ocr.txt
+2026-06-03 14:51:11 | DEBUG    | core.validator | AMULYA_DMCFSJU17090 (1).pdf: FAIL (failed: ['student_name'])
+2026-06-03 14:51:11 | INFO     | core.processor |   student_name: FAIL → Corrected to 'AMULYA'
+2026-06-03 14:51:11 | INFO     | core.processor |   course_name: PASS
+2026-06-03 14:51:11 | INFO     | core.processor |   ojt_period: PASS
+2026-06-03 14:51:12 | INFO     | core.processor |   enrollment_no: PASS
+2026-06-03 14:51:12 | INFO     | core.processor | Validation completed: AMULYA_DMCFSJU17090 (1).pdf → FAIL
+2026-06-03 14:51:13 | DEBUG    | core.stamp_detector | Ink ratio: 0.0077 (threshold: 0.01)
+2026-06-03 14:51:13 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 14:51:14 | DEBUG    | core.stamp_detector | Ink ratio: 0.0076 (threshold: 0.01)
+2026-06-03 14:51:14 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 14:51:14 | DEBUG    | core.stamp_detector | Ink ratio: 0.0068 (threshold: 0.01)
+2026-06-03 14:51:14 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 14:51:14 | DEBUG    | core.stamp_detector | Ink ratio: 0.0072 (threshold: 0.01)
+2026-06-03 14:51:14 | DEBUG    | core.stamp_detector | Ink ratio: 0.0108 (threshold: 0.01)
+2026-06-03 14:51:15 | DEBUG    | core.stamp_detector | Ink ratio: 0.0097 (threshold: 0.01)
+2026-06-03 14:51:15 | DEBUG    | core.stamp_detector | Ink ratio: 0.0117 (threshold: 0.01)
+2026-06-03 14:51:16 | DEBUG    | core.stamp_detector | Ink ratio: 0.0078 (threshold: 0.01)
+2026-06-03 14:51:16 | DEBUG    | core.stamp_detector | Ink ratio: 0.0074 (threshold: 0.01)
+2026-06-03 14:51:16 | DEBUG    | core.processor | AMULYA_DMCFSJU17090 (1).pdf: Stamp FAIL on pages [2, 3, 4, 7]
+2026-06-03 14:51:16 | DEBUG    | core.pdf_corrector | Using fallback region for 'student_name'
+2026-06-03 14:51:17 | INFO     | core.pdf_corrector | Corrected PDF saved: AMULYA_DMCFSJU17090 (1).pdf (1 corrections)
+2026-06-03 14:51:17 | INFO     | core.processor | Corrected PDF Saved: D:\Pranav Work Station\Demo\Excel Output\corrected\AMULYA_DMCFSJU17090 (1).pdf
+2026-06-03 14:51:17 | INFO     | core.processor | Filename Enrollment: DMCFSJU10262
+2026-06-03 14:51:17 | INFO     | core.processor | [1/9] AMULYA_DMCFSJU17090 (1).pdf → FAIL
+2026-06-03 14:51:17 | INFO     | core.processor | Excel Match: Found
+2026-06-03 14:51:17 | DEBUG    | core.pdf_reader | Opened PDF: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf (7 pages)
+2026-06-03 14:51:17 | INFO     | core.processor | PDF loaded: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf
+2026-06-03 14:52:44 | INFO     | core.processor | Cancellation requested…
+2026-06-03 14:52:45 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': '6JL LA', 'course_name': 'Jain University', 'enrollment_no': 'DMCFSJU13644', 'ojt_period': '06 |06', 'department': 'Role of Student Trainee'}
+2026-06-03 14:52:45 | INFO     | core.processor | OCR completed: BILLA SWAPNA_DMCFSJU13644 (1).pdf
+2026-06-03 14:52:45 | INFO     | core.processor | OCR Enrollment: DMCFSJU13644
+2026-06-03 14:52:45 | INFO     | core.processor | OCR text saved: BILLA SWAPNA_DMCFSJU13644 (1)_ocr.txt
+2026-06-03 14:52:45 | DEBUG    | core.validator | BILLA SWAPNA_DMCFSJU13644 (1).pdf: PASS (failed: [])
+2026-06-03 14:52:45 | INFO     | core.processor |   student_name: PASS
+2026-06-03 14:52:45 | INFO     | core.processor |   course_name: PASS
+2026-06-03 14:52:45 | INFO     | core.processor |   ojt_period: PASS
+2026-06-03 14:52:45 | INFO     | core.processor |   enrollment_no: PASS
+2026-06-03 14:52:45 | INFO     | core.processor | Validation completed: BILLA SWAPNA_DMCFSJU13644 (1).pdf → PASS
+2026-06-03 14:52:45 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 14:52:45 | DEBUG    | core.stamp_detector | Ink ratio: 0.0056 (threshold: 0.01)
+2026-06-03 14:52:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0073 (threshold: 0.01)
+2026-06-03 14:52:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0087 (threshold: 0.01)
+2026-06-03 14:52:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0064 (threshold: 0.01)
+2026-06-03 14:52:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0066 (threshold: 0.01)
+2026-06-03 14:52:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0086 (threshold: 0.01)
+2026-06-03 14:52:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0105 (threshold: 0.01)
+2026-06-03 14:52:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0113 (threshold: 0.01)
+2026-06-03 14:52:46 | DEBUG    | core.stamp_detector | Ink ratio: 0.0097 (threshold: 0.01)
+2026-06-03 14:52:47 | DEBUG    | core.stamp_detector | Ink ratio: 0.0105 (threshold: 0.01)
+2026-06-03 14:52:47 | DEBUG    | core.stamp_detector | Ink ratio: 0.0133 (threshold: 0.01)
+2026-06-03 14:52:47 | DEBUG    | core.processor | BILLA SWAPNA_DMCFSJU13644 (1).pdf: Stamp FAIL on pages [2, 3, 4]
+2026-06-03 14:52:47 | INFO     | core.processor | Corrected PDF Saved: D:\Pranav Work Station\Demo\Excel Output\corrected\BILLA SWAPNA_DMCFSJU13644 (1).pdf
+2026-06-03 14:52:47 | INFO     | core.processor | Filename Enrollment: DMCFSJU06404
+2026-06-03 14:52:47 | INFO     | core.processor | Excel Match: Found
+2026-06-03 14:52:47 | DEBUG    | core.pdf_reader | Opened PDF: MD MAHATABALI_DMCFSJU06404.pdf (7 pages)
+2026-06-03 14:52:47 | INFO     | core.processor | PDF loaded: MD MAHATABALI_DMCFSJU06404.pdf
+2026-06-03 14:52:48 | DEBUG    | core.ocr_engine | Rejected OCR enrollment 'Name' (matches keyword)
+2026-06-03 14:52:48 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'Vidhy 9', 'course_name': 'Jain University', 'enrollment_no': 'DMCFSJU10271', 'ojt_period': 'Contact Number; mail', 'department': 'Role of Student Trainee'}
+2026-06-03 14:52:48 | INFO     | core.processor | OCR completed: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf
+2026-06-03 14:52:48 | INFO     | core.processor | OCR Enrollment: DMCFSJU10271
+2026-06-03 14:52:48 | INFO     | core.processor | OCR text saved: B VIDHYA SAGAR_DMCFSJU10271 (1)_ocr.txt
+2026-06-03 14:52:48 | DEBUG    | core.validator | B VIDHYA SAGAR_DMCFSJU10271 (1).pdf: FAIL (failed: ['student_name'])
+2026-06-03 14:52:48 | INFO     | core.processor |   student_name: FAIL → Corrected to 'B VIDHYA SAGAR'
+2026-06-03 14:52:48 | INFO     | __main__ | OJT Checker System exited.
+2026-06-03 14:52:49 | ERROR    | core.processor | Pipeline error for B VIDHYA SAGAR_DMCFSJU10271 (1).pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 318, in _process_single_pdf
+    self._log(f"  {field_name}: {status_str} → Corrected to '{field_result.correction_text}'")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 396, in _log
+    self.progress.log(msg)
+    ~~~~~~~~~~~~~~~~~^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 61, in log
+    logger.info(msg)
+    ~~~~~~~~~~~^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1520, in info
+    self._log(INFO, msg, args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1665, in _log
+    self.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1681, in handle
+    self.callHandlers(record)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1737, in callHandlers
+    hdlr.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1027, in handle
+    self.emit(record)
+    ~~~~~~~~~^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\gui\main_window.py", line 457, in emit
+    self_._win.after(0, lambda: self_._win._append_log(msg, tag))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\tkinter\__init__.py", line 887, in after
+    name = self._register(callit)
+  File "C:\Python314\Lib\tkinter\__init__.py", line 1712, in _register
+    self.tk.createcommand(name, f)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+RuntimeError: main thread is not in main loop
+2026-06-03 14:52:51 | INFO     | core.processor | Filename Enrollment: DMCFSJU08004
+2026-06-03 14:52:52 | ERROR    | core.processor | Pipeline error for PAWAR JYOTHI BAI_DMCFSJU08004.pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 267, in _process_single_pdf
+    self._log(f"Filename Enrollment: {enrollment_from_filename}")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 396, in _log
+    self.progress.log(msg)
+    ~~~~~~~~~~~~~~~~~^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 61, in log
+    logger.info(msg)
+    ~~~~~~~~~~~^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1520, in info
+    self._log(INFO, msg, args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1665, in _log
+    self.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1681, in handle
+    self.callHandlers(record)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1737, in callHandlers
+    hdlr.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1027, in handle
+    self.emit(record)
+    ~~~~~~~~~^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\gui\main_window.py", line 457, in emit
+    self_._win.after(0, lambda: self_._win._append_log(msg, tag))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\tkinter\__init__.py", line 887, in after
+    name = self._register(callit)
+  File "C:\Python314\Lib\tkinter\__init__.py", line 1712, in _register
+    self.tk.createcommand(name, f)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+RuntimeError: main thread is not in main loop
+2026-06-03 14:52:53 | INFO     | core.processor | Filename Enrollment: DMCFSJU06419
+2026-06-03 14:52:54 | ERROR    | core.processor | Pipeline error for SANGMESH_DMCFSJU06419.pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 267, in _process_single_pdf
+    self._log(f"Filename Enrollment: {enrollment_from_filename}")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 396, in _log
+    self.progress.log(msg)
+    ~~~~~~~~~~~~~~~~~^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 61, in log
+    logger.info(msg)
+    ~~~~~~~~~~~^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1520, in info
+    self._log(INFO, msg, args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1665, in _log
+    self.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1681, in handle
+    self.callHandlers(record)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1737, in callHandlers
+    hdlr.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1027, in handle
+    self.emit(record)
+    ~~~~~~~~~^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\gui\main_window.py", line 457, in emit
+    self_._win.after(0, lambda: self_._win._append_log(msg, tag))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\tkinter\__init__.py", line 887, in after
+    name = self._register(callit)
+  File "C:\Python314\Lib\tkinter\__init__.py", line 1712, in _register
+    self.tk.createcommand(name, f)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+RuntimeError: main thread is not in main loop
+2026-06-03 14:52:55 | INFO     | core.processor | Filename Enrollment: DMCFSJU05080
+2026-06-03 14:52:57 | ERROR    | core.processor | Pipeline error for VANAM LAXMI_DMCFSJU05080.pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 267, in _process_single_pdf
+    self._log(f"Filename Enrollment: {enrollment_from_filename}")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 396, in _log
+    self.progress.log(msg)
+    ~~~~~~~~~~~~~~~~~^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 61, in log
+    logger.info(msg)
+    ~~~~~~~~~~~^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1520, in info
+    self._log(INFO, msg, args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1665, in _log
+    self.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1681, in handle
+    self.callHandlers(record)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1737, in callHandlers
+    hdlr.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1027, in handle
+    self.emit(record)
+    ~~~~~~~~~^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\gui\main_window.py", line 457, in emit
+    self_._win.after(0, lambda: self_._win._append_log(msg, tag))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\tkinter\__init__.py", line 887, in after
+    name = self._register(callit)
+  File "C:\Python314\Lib\tkinter\__init__.py", line 1712, in _register
+    self.tk.createcommand(name, f)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+RuntimeError: main thread is not in main loop
+2026-06-03 14:53:03 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'CHAkA LI SANDHYA RANZ_', 'course_name': 'Jain University', 'enrollment_no': 'DMCFSJU05093', 'ojt_period': 'Contact Number; mail', 'department': 'Role of Student Trainee'}
+2026-06-03 14:53:03 | INFO     | core.processor | OCR completed: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf
+2026-06-03 14:53:05 | ERROR    | core.processor | Pipeline error for CHAKALI SANDHYA RANI_DMCFSJU05093.pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 296, in _process_single_pdf
+    self._log(f"OCR completed: {pdf_path.name}")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 396, in _log
+    self.progress.log(msg)
+    ~~~~~~~~~~~~~~~~~^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 61, in log
+    logger.info(msg)
+    ~~~~~~~~~~~^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1520, in info
+    self._log(INFO, msg, args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1665, in _log
+    self.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1681, in handle
+    self.callHandlers(record)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1737, in callHandlers
+    hdlr.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1027, in handle
+    self.emit(record)
+    ~~~~~~~~~^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\gui\main_window.py", line 457, in emit
+    self_._win.after(0, lambda: self_._win._append_log(msg, tag))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\tkinter\__init__.py", line 887, in after
+    name = self._register(callit)
+  File "C:\Python314\Lib\tkinter\__init__.py", line 1712, in _register
+    self.tk.createcommand(name, f)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+RuntimeError: main thread is not in main loop
+2026-06-03 14:53:16 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'skll', 'course_name': 'manu', 'enrollment_no': 'DMCFSJU10262', 'ojt_period': 'Contact Number; mail', 'department': 'Role of Student Trainee'}
+2026-06-03 14:53:16 | INFO     | core.processor | OCR completed: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf
+2026-06-03 14:53:17 | ERROR    | core.processor | Pipeline error for CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 296, in _process_single_pdf
+    self._log(f"OCR completed: {pdf_path.name}")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 396, in _log
+    self.progress.log(msg)
+    ~~~~~~~~~~~~~~~~~^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 61, in log
+    logger.info(msg)
+    ~~~~~~~~~~~^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1520, in info
+    self._log(INFO, msg, args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1665, in _log
+    self.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1681, in handle
+    self.callHandlers(record)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1737, in callHandlers
+    hdlr.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1027, in handle
+    self.emit(record)
+    ~~~~~~~~~^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\gui\main_window.py", line 457, in emit
+    self_._win.after(0, lambda: self_._win._append_log(msg, tag))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\tkinter\__init__.py", line 887, in after
+    name = self._register(callit)
+  File "C:\Python314\Lib\tkinter\__init__.py", line 1712, in _register
+    self.tk.createcommand(name, f)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+RuntimeError: main thread is not in main loop
+2026-06-03 14:53:41 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'Md Malitabali', 'course_name': 'Monufactusi _', 'enrollment_no': 'DMCFSJU06404', 'ojt_period': 'Contact Number; mail', 'department': 'Role of Stdent Trainee'}
+2026-06-03 14:53:41 | INFO     | core.processor | OCR completed: MD MAHATABALI_DMCFSJU06404.pdf
+2026-06-03 14:53:42 | ERROR    | core.processor | Pipeline error for MD MAHATABALI_DMCFSJU06404.pdf
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 296, in _process_single_pdf
+    self._log(f"OCR completed: {pdf_path.name}")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 396, in _log
+    self.progress.log(msg)
+    ~~~~~~~~~~~~~~~~~^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 61, in log
+    logger.info(msg)
+    ~~~~~~~~~~~^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1520, in info
+    self._log(INFO, msg, args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1665, in _log
+    self.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1681, in handle
+    self.callHandlers(record)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1737, in callHandlers
+    hdlr.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1027, in handle
+    self.emit(record)
+    ~~~~~~~~~^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\gui\main_window.py", line 457, in emit
+    self_._win.after(0, lambda: self_._win._append_log(msg, tag))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\tkinter\__init__.py", line 887, in after
+    name = self._register(callit)
+  File "C:\Python314\Lib\tkinter\__init__.py", line 1712, in _register
+    self.tk.createcommand(name, f)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+RuntimeError: main thread is not in main loop
+2026-06-03 14:53:43 | INFO     | core.processor | Memory usage high (14941 MB). Pausing 5 seconds to let GC run…
+2026-06-03 14:53:44 | ERROR    | core.processor | Fatal error during processing
+Traceback (most recent call last):
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 147, in start
+    self._check_memory()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 389, in _check_memory
+    self._log(
+    ~~~~~~~~~^
+        f"Memory usage high ({used_mb:.0f} MB). "
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        f"Pausing 5 seconds to let GC run…"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 396, in _log
+    self.progress.log(msg)
+    ~~~~~~~~~~~~~~~~~^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\core\processor.py", line 61, in log
+    logger.info(msg)
+    ~~~~~~~~~~~^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1520, in info
+    self._log(INFO, msg, args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1665, in _log
+    self.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1681, in handle
+    self.callHandlers(record)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1737, in callHandlers
+    hdlr.handle(record)
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\logging\__init__.py", line 1027, in handle
+    self.emit(record)
+    ~~~~~~~~~^^^^^^^^
+  File "c:\Users\dell\Downloads\maxus_rpa_v1\Dmc-codecamp\ojt-checker\gui\main_window.py", line 457, in emit
+    self_._win.after(0, lambda: self_._win._append_log(msg, tag))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\tkinter\__init__.py", line 887, in after
+    name = self._register(callit)
+  File "C:\Python314\Lib\tkinter\__init__.py", line 1712, in _register
+    self.tk.createcommand(name, f)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+RuntimeError: main thread is not in main loop

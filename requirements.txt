@@ -1,0 +1,35 @@
+# OJT Checker System - Dependencies
+# Install with: pip install -r requirements.txt
+
+# GUI Framework
+customtkinter>=5.2.0
+Pillow>=10.0.0
+
+# Excel Processing
+openpyxl>=3.1.2
+pandas>=2.0.0
+xlsxwriter>=3.1.0
+
+# PDF Processing
+PyMuPDF>=1.23.0          # fitz - fast PDF reading/writing
+reportlab>=4.0.0         # PDF generation utilities
+pypdf>=3.17.0            # PDF metadata
+
+# OCR Engine
+easyocr>=1.7.0           # Primary OCR (GPU optional)
+# pytesseract>=0.3.10    # Fallback OCR (requires Tesseract binary)
+
+# Fuzzy Matching
+rapidfuzz>=3.5.0
+
+# Image Processing (for OCR preprocessing)
+opencv-python>=4.8.0
+numpy>=1.24.0
+
+# Logging & Utilities
+colorlog>=6.7.0
+python-dotenv>=1.0.0
+
+# Performance
+psutil>=5.9.0            # Memory monitoring
+concurrent-log-handler>=0.9.24
