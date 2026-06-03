@@ -1354,3 +1354,73 @@ Traceback (most recent call last):
     self.tk.createcommand(name, f)
     ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
 RuntimeError: main thread is not in main loop
+2026-06-03 17:46:48 | INFO     | root | OJT Checker System v1.0.0 — logging initialised.
+2026-06-03 17:46:48 | INFO     | __main__ | Starting OJT Checker System…
+2026-06-03 17:47:15 | INFO     | core.excel_reader | Loading Excel master file: Demoojtexcel.xlsx
+2026-06-03 17:47:15 | INFO     | core.excel_reader | Excel loaded: 9 student records across 1 courses
+2026-06-03 17:47:26 | INFO     | core.processor | Output folders → corrected: D:\Pranav Work Station\Demo\Excel Output\corrected, ocr_texts: D:\Pranav Work Station\Demo\Excel Output\ocr_texts, reports: D:\Pranav Work Station\Demo\Excel Output\reports
+2026-06-03 17:47:26 | INFO     | core.pdf_reader | Found 9 PDF files in D:\Pranav Work Station\Demo\archive (5)
+2026-06-03 17:47:26 | INFO     | core.processor | Found 9 PDFs. Starting processing…
+2026-06-03 17:47:26 | INFO     | core.processor | Batch 1: processing 9 PDFs…
+2026-06-03 17:47:26 | INFO     | core.processor | [ENROLLMENT] Filename: DMCFSJU17090
+2026-06-03 17:47:26 | INFO     | core.processor | [ENROLLMENT] Filename: DMCFSJU10271
+2026-06-03 17:47:26 | INFO     | core.processor | [ENROLLMENT] Filename: DMCFSJU13644
+2026-06-03 17:47:26 | INFO     | core.processor | [ENROLLMENT] Filename: DMCFSJU05093
+2026-06-03 17:47:26 | INFO     | core.processor | [EXCEL] Match: FOUND for enrollment DMCFSJU17090
+2026-06-03 17:47:26 | INFO     | core.processor | [EXCEL] Match: FOUND for enrollment DMCFSJU10271
+2026-06-03 17:47:26 | INFO     | core.processor | [EXCEL] Match: FOUND for enrollment DMCFSJU13644
+2026-06-03 17:47:26 | INFO     | core.processor | [EXCEL] Match: FOUND for enrollment DMCFSJU05093
+2026-06-03 17:47:26 | DEBUG    | core.pdf_reader | Opened PDF: AMULYA_DMCFSJU17090 (1).pdf (7 pages)
+2026-06-03 17:47:26 | INFO     | core.processor | [PDF] Loaded: AMULYA_DMCFSJU17090 (1).pdf
+2026-06-03 17:47:26 | DEBUG    | core.pdf_reader | Opened PDF: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf (7 pages)
+2026-06-03 17:47:26 | INFO     | core.processor | [PDF] Loaded: B VIDHYA SAGAR_DMCFSJU10271 (1).pdf
+2026-06-03 17:47:26 | DEBUG    | core.pdf_reader | Opened PDF: BILLA SWAPNA_DMCFSJU13644 (1).pdf (7 pages)
+2026-06-03 17:47:26 | INFO     | core.processor | [PDF] Loaded: BILLA SWAPNA_DMCFSJU13644 (1).pdf
+2026-06-03 17:47:26 | DEBUG    | core.pdf_reader | Opened PDF: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf (7 pages)
+2026-06-03 17:47:26 | INFO     | core.processor | [PDF] Loaded: CHAKALI SANDHYA RANI_DMCFSJU05093.pdf
+2026-06-03 17:47:26 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 17:47:27 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 17:47:27 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 17:47:27 | INFO     | core.ocr_engine | Initialising EasyOCR reader (first-time, may take ~5–10 seconds)…
+2026-06-03 17:47:44 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 17:47:44 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 17:47:44 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 17:47:44 | INFO     | core.ocr_engine | EasyOCR reader ready.
+2026-06-03 17:48:25 | DEBUG    | core.ocr_engine | [ENROLLMENT] Priority 1 - Using filename enrollment: DMCFSJU17090
+2026-06-03 17:48:25 | DEBUG    | core.ocr_engine | Extracted fields: {'student_name': 'Ammulya', 'course_name': 'shau', 'enrollment_no': 'DMCFSJU17090', 'ojt_period': 'I#/b/s5', 'department': 'Role of Student Trainee'}
+2026-06-03 17:48:25 | INFO     | core.processor | [OCR] Extraction completed for AMULYA_DMCFSJU17090 (1).pdf
+2026-06-03 17:48:25 | INFO     | core.processor | [OCR] Enrollment extracted: DMCFSJU17090
+2026-06-03 17:48:25 | INFO     | core.processor | OCR text saved: AMULYA_DMCFSJU17090 (1)_ocr.txt
+2026-06-03 17:48:25 | INFO     | core.processor | [VALIDATION] Starting validation...
+2026-06-03 17:48:25 | DEBUG    | core.validator | [VALIDATOR] Enrollment source: FILENAME (Priority 1) = DMCFSJU17090
+2026-06-03 17:48:25 | DEBUG    | core.validator | [VALIDATOR] Excel record: FOUND (pre-matched)
+2026-06-03 17:48:25 | DEBUG    | core.validator | [VALIDATOR] AMULYA_DMCFSJU17090 (1).pdf: FAIL (fields: ['student_name'])
+2026-06-03 17:48:25 | INFO     | core.processor | [FIELD] student_name: FAIL (score=36) → Corrected to 'AMULYA'
+2026-06-03 17:48:25 | INFO     | core.processor | [FIELD] course_name: PASS (score=100)
+2026-06-03 17:48:25 | INFO     | core.processor | [FIELD] ojt_period: PASS (score=100)
+2026-06-03 17:48:25 | INFO     | core.processor | [FIELD] enrollment_no: PASS (score=100)
+2026-06-03 17:48:25 | INFO     | core.processor | [VALIDATION] Completed: AMULYA_DMCFSJU17090 (1).pdf → FAIL
+2026-06-03 17:48:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0077 (threshold: 0.01)
+2026-06-03 17:48:25 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 17:48:26 | DEBUG    | core.stamp_detector | Ink ratio: 0.0076 (threshold: 0.01)
+2026-06-03 17:48:26 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 17:48:26 | DEBUG    | core.stamp_detector | Ink ratio: 0.0068 (threshold: 0.01)
+2026-06-03 17:48:26 | DEBUG    | core.stamp_detector | Ink ratio: 0.0071 (threshold: 0.01)
+2026-06-03 17:48:26 | DEBUG    | core.stamp_detector | Ink ratio: 0.0072 (threshold: 0.01)
+2026-06-03 17:48:26 | DEBUG    | core.stamp_detector | Ink ratio: 0.0108 (threshold: 0.01)
+2026-06-03 17:48:26 | DEBUG    | core.stamp_detector | Ink ratio: 0.0097 (threshold: 0.01)
+2026-06-03 17:48:26 | DEBUG    | core.stamp_detector | Ink ratio: 0.0117 (threshold: 0.01)
+2026-06-03 17:48:26 | DEBUG    | core.stamp_detector | Ink ratio: 0.0078 (threshold: 0.01)
+2026-06-03 17:48:26 | DEBUG    | core.stamp_detector | Ink ratio: 0.0074 (threshold: 0.01)
+2026-06-03 17:48:26 | DEBUG    | core.processor | AMULYA_DMCFSJU17090 (1).pdf: Stamp FAIL on pages [2, 3, 4, 7]
+2026-06-03 17:48:26 | DEBUG    | core.pdf_corrector | [CORRECTOR] Will correct student_name: 'Ammulya' → 'AMULYA'
+2026-06-03 17:48:26 | INFO     | core.processor | [CORRECTION] 1 fields need correction
+2026-06-03 17:48:26 | DEBUG    | core.pdf_corrector | Using fallback region for 'student_name'
+2026-06-03 17:48:26 | INFO     | core.pdf_corrector | [PDF_CORRECTOR] Corrected PDF saved: AMULYA_DMCFSJU17090 (1).pdf (1 corrections applied)
+2026-06-03 17:48:26 | INFO     | core.processor | [CORRECTION] Corrected PDF saved: AMULYA_DMCFSJU17090 (1).pdf (1 corrections applied)
+2026-06-03 17:48:26 | INFO     | core.processor | [ENROLLMENT] Filename: DMCFSJU10262
+2026-06-03 17:48:26 | DEBUG    | core.report_generator | [REPORT] Added: AMULYA_DMCFSJU17090 (1).pdf → FAIL
+2026-06-03 17:48:26 | INFO     | core.processor | [1/9] AMULYA_DMCFSJU17090 (1).pdf → FAIL
+2026-06-03 17:48:26 | INFO     | core.processor | [EXCEL] Match: FOUND for enrollment DMCFSJU10262
+2026-06-03 17:48:26 | DEBUG    | core.pdf_reader | Opened PDF: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf (7 pages)
+2026-06-03 17:48:26 | INFO     | core.processor | [PDF] Loaded: CHINTALAGIRI PAVITHRA_DMCFSJU10262.pdf

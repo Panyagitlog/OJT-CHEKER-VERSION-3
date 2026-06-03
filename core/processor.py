@@ -264,24 +264,24 @@ class OJTProcessor:
             # ── Step 1: Extract enrollment from filename ─────────
             enrollment_from_filename = self._extract_enrollment_from_filename(pdf_path)
             if enrollment_from_filename:
-                self._log(f"Filename Enrollment: {enrollment_from_filename}")
+                self._log(f"[ENROLLMENT] Filename: {enrollment_from_filename}")
             else:
-                self._log(f"No enrollment found in filename: {pdf_path.name}")
+                self._log(f"[ENROLLMENT] Filename: NOT FOUND in {pdf_path.name}")
 
             # ── Step 2: Find Excel record ────────────────────────
             excel_record = None
             if enrollment_from_filename:
                 excel_record = self.excel.get_by_enrollment(enrollment_from_filename)
                 if excel_record:
-                    self._log(f"Excel Match: Found")
+                    self._log(f"[EXCEL] Match: FOUND for enrollment {enrollment_from_filename}")
                     report.enrollment_no = enrollment_from_filename
                     report.student_record = excel_record
                 else:
-                    self._log(f"Excel Match: Not found")
+                    self._log(f"[EXCEL] Match: NOT FOUND for enrollment {enrollment_from_filename}")
 
             # ── Step 3: Open PDF & validate page count ──────────
             with PDFReader(pdf_path) as reader:
-                self._log(f"PDF loaded: {pdf_path.name}")
+                self._log(f"[PDF] Loaded: {pdf_path.name}")
 
                 page_ok, page_note = reader.validate_page_count()
                 report.page_count_ok = page_ok
@@ -293,14 +293,20 @@ class OJTProcessor:
                 page_image = reader.get_page_image(config.OCR_PAGE_INDEX)
                 ocr_fields = self.ocr.extract_fields(page_image, filename_enrollment=enrollment_from_filename)
 
-                self._log(f"OCR completed: {pdf_path.name}")
+                self._log(f"[OCR] Extraction completed for {pdf_path.name}")
                 ocr_enroll = ocr_fields.get("enrollment_no", "")
-                self._log(f"OCR Enrollment: {ocr_enroll if ocr_enroll else 'NOT FOUND'}")
+                self._log(f"[OCR] Enrollment extracted: {ocr_enroll if ocr_enroll else 'NOT FOUND'}")
+                
+                # Debug: Compare filename vs OCR enrollment
+                if enrollment_from_filename and ocr_enroll and enrollment_from_filename != ocr_enroll:
+                    self._log(f"[ENROLLMENT] Mismatch: Filename={enrollment_from_filename} vs OCR={ocr_enroll}")
+                    self._log(f"[ENROLLMENT] USING FILENAME (Priority 1)")
 
                 # Save OCR text file
                 self._save_ocr_text(pdf_path.stem, ocr_fields)
 
                 # ── Step 5: Validation (Excel-driven) ───────────
+                self._log(f"[VALIDATION] Starting validation...")
                 val_report = self.validator.validate(
                     pdf_path.name,
                     ocr_fields,
@@ -315,11 +321,11 @@ class OJTProcessor:
                 for field_name, field_result in val_report.field_results.items():
                     status_str = field_result.status
                     if field_result.correction_text and field_result.status == "FAIL":
-                        self._log(f"  {field_name}: {status_str} → Corrected to '{field_result.correction_text}'")
+                        self._log(f"[FIELD] {field_name}: {status_str} (score={field_result.score:.0f}) → Corrected to '{field_result.correction_text}'")
                     else:
-                        self._log(f"  {field_name}: {status_str}")
+                        self._log(f"[FIELD] {field_name}: {status_str} (score={field_result.score:.0f})")
 
-                self._log(f"Validation completed: {pdf_path.name} → {val_report.final_status}")
+                self._log(f"[VALIDATION] Completed: {pdf_path.name} → {val_report.final_status}")
 
                 # ── Step 6: Stamp detection ──────────────────
                 stamp_result = self.stamp_detector.check_all_pages(reader)
@@ -328,10 +334,13 @@ class OJTProcessor:
                     logger.debug(
                         f"{pdf_path.name}: Stamp FAIL on pages {stamp_result['failed_pages']}"
                     )
+                else:
+                    self._log(f"[STAMP] Detection: {stamp_result['status']}")
 
                 # ── Step 7: PDF Correction (using Excel values) ──
                 corrections = self.corrector.build_corrections_dict(val_report)
                 if corrections:
+                    self._log(f"[CORRECTION] {len(corrections)} fields need correction")
                     out_path = self.corrected_dir / pdf_path.name
                     success, n_applied, msg = self.corrector.correct_pdf(
                         source_path=pdf_path,
@@ -341,24 +350,25 @@ class OJTProcessor:
                     )
                     report.corrections_made = n_applied
                     if success:
-                        self._log(f"Corrected PDF Saved: {out_path}")
+                        self._log(f"[CORRECTION] Corrected PDF saved: {out_path.name} ({n_applied} corrections applied)")
                     else:
                         logger.error(f"Correction failed for {pdf_path.name}: {msg}")
-                        self._log(f"PDF correction FAILED: {pdf_path.name} -> {msg}")
+                        self._log(f"[CORRECTION] FAILED: {msg}")
                 else:
                     # No corrections needed — still copy to output for completeness
                     import shutil
                     out_path = self.corrected_dir / pdf_path.name
                     try:
                         shutil.copy2(str(pdf_path), str(out_path))
-                        self._log(f"Corrected PDF Saved: {out_path}")
+                        self._log(f"[CORRECTION] No corrections needed - PDF copied to output")
                     except Exception as exc:
                         logger.debug(f"Failed to copy original PDF to corrected folder: {exc}")
-                        self._log(f"Failed to save corrected PDF for {pdf_path.name}: {exc}")
+                        self._log(f"[CORRECTION] Failed to save PDF for {pdf_path.name}: {exc}")
 
         except Exception as exc:
             logger.exception(f"Pipeline error for {pdf_path.name}")
             report.error = str(exc)
+            self._log(f"[ERROR] Pipeline error: {exc}")
 
         return report
 

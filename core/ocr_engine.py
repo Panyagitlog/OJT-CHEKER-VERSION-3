@@ -215,17 +215,27 @@ class OCREngine:
         """
         Extract enrollment number from OCR.
         
+        Priority 1: Use filename enrollment if provided (already validated)
+        Priority 2: Extract from OCR if filename enrollment not available
+        
         Validation:
         - Must match pattern DMCFSJU\\d+
         - Reject keywords: Name, Student, StudentName, Course, Skill, Year, 
-          Period, Department, DepartmentandJob, JobRole
-        
-        Falls back to regex only if filename_enrollment not provided.
+          Period, Department, DepartmentandJob, JobRole, designation, etc.
         """
-        # Keywords to reject (common OCR errors)
+        # PRIORITY 1: Filename enrollment is most reliable
+        if filename_enrollment:
+            logger.debug(f"[ENROLLMENT] Priority 1 - Using filename enrollment: {filename_enrollment}")
+            return filename_enrollment
+
+        # PRIORITY 2: OCR extraction (fallback)
+        logger.debug(f"[ENROLLMENT] Priority 2 - Extracting from OCR (filename not provided)")
+        
+        # Keywords to reject (common OCR errors and label keywords)
         REJECTION_KEYWORDS = {
             "name", "student", "studentname", "course", "skill", 
-            "year", "period", "department", "departmentandjob", "jobrole"
+            "year", "period", "department", "departmentandjob", "jobrole",
+            "designation", "role", "job", "title", "position"
         }
 
         # Try keyword anchor first
@@ -234,24 +244,38 @@ class OCREngine:
         )
         
         if by_keyword:
-            # Check if it matches a rejection keyword
-            if by_keyword.lower() in REJECTION_KEYWORDS:
-                logger.debug(f"Rejected OCR enrollment '{by_keyword}' (matches keyword)")
+            # Check if it matches a rejection keyword (exact or contains)
+            by_keyword_lower = by_keyword.lower()
+            is_rejection = False
+            
+            # Exact match check
+            if by_keyword_lower in REJECTION_KEYWORDS:
+                is_rejection = True
+                logger.debug(f"[ENROLLMENT] Rejected OCR value '{by_keyword}' (exact match with rejection keyword)")
+            # Partial match check for multi-word OCR errors
             else:
+                for reject_kw in REJECTION_KEYWORDS:
+                    if reject_kw in by_keyword_lower:
+                        is_rejection = True
+                        logger.debug(f"[ENROLLMENT] Rejected OCR value '{by_keyword}' (contains '{reject_kw}')")
+                        break
+            
+            if not is_rejection:
                 # Validate against DMCFSJU\\d+ pattern
                 match = re.search(r"DMCFSJU\d+", by_keyword, re.IGNORECASE)
                 if match:
-                    return match.group(0).upper()
+                    extracted = match.group(0).upper()
+                    logger.debug(f"[ENROLLMENT] Extracted from OCR keyword: {extracted}")
+                    return extracted
 
         # Regex fallback: DMCFSJU\\d+ pattern only
         match = re.search(r"DMCFSJU\d+", full_text, re.IGNORECASE)
         if match:
-            return match.group(0).upper()
+            extracted = match.group(0).upper()
+            logger.debug(f"[ENROLLMENT] Extracted from regex fallback: {extracted}")
+            return extracted
 
-        # If filename_enrollment provided, it's already validated
-        if filename_enrollment:
-            return filename_enrollment
-
+        logger.debug(f"[ENROLLMENT] No valid enrollment found in OCR")
         return ""
 
     def _extract_period(self, lines: list[str], full_text: str) -> str:

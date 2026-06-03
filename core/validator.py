@@ -130,21 +130,28 @@ class Validator:
         # Use pre-found enrollment and record if provided
         if excel_enrollment:
             report.enrollment_no = excel_enrollment
+            logger.debug(f"[VALIDATOR] Enrollment source: FILENAME (Priority 1) = {excel_enrollment}")
+        else:
+            logger.debug(f"[VALIDATOR] Enrollment source: No filename enrollment provided, will try OCR fallback")
 
         if excel_record:
             report.student_record = excel_record
+            logger.debug(f"[VALIDATOR] Excel record: FOUND (pre-matched)")
         else:
             # Fallback to old method if no pre-found record
             student_record = self._find_student_record(ocr_fields)
             report.student_record = student_record
             if not excel_enrollment:
                 report.enrollment_no = ocr_fields.get("enrollment_no", "")
+                logger.debug(f"[VALIDATOR] Enrollment source: OCR (fallback) = {report.enrollment_no}")
 
             if not student_record:
                 report.error = "No matching student record found in Excel"
+                logger.warning(f"[VALIDATOR] No Excel record found for {pdf_name}")
                 self._validate_fields_without_record(report, ocr_fields)
                 return report
             excel_record = student_record
+            logger.debug(f"[VALIDATOR] Excel record: FOUND (via fuzzy match)")
 
         # Validate each key field against Excel values
         report.field_results["student_name"] = self._validate_field(
@@ -185,8 +192,8 @@ class Validator:
         )
 
         logger.debug(
-            f"{pdf_name}: {report.final_status} "
-            f"(failed: {report.failed_fields})"
+            f"[VALIDATOR] {pdf_name}: {report.final_status} "
+            f"(fields: {[k for k, v in report.field_results.items() if not v.is_pass]})"
         )
         return report
 

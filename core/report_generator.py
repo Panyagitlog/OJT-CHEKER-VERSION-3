@@ -65,6 +65,7 @@ class ReportGenerator:
         row = self._report_to_row(report)
         self._rows.append(row)
         self._update_stats(report)
+        logger.debug(f"[REPORT] Added: {report.pdf_name} → {report.final_status}")
 
     def save(self, output_dir: Path, filename: Optional[str] = None) -> Path:
         """
@@ -80,6 +81,8 @@ class ReportGenerator:
 
         output_path = output_dir / filename
 
+        logger.debug(f"[REPORT] Generating Excel report with {len(self._rows)} records...")
+        
         wb = openpyxl.Workbook()
         ws_detail = wb.active
         ws_detail.title = "Validation Results"
@@ -91,10 +94,11 @@ class ReportGenerator:
 
         try:
             wb.save(str(output_path))
-            logger.info(f"Report saved: {output_path}")
+            logger.info(f"[REPORT] Excel report saved: {output_path}")
+            logger.info(f"[REPORT] Summary: {self._stats['total']} total | {self._stats['pass']} pass | {self._stats['fail']} fail | {self._stats['error']} errors")
             return output_path
         except Exception as exc:
-            logger.error(f"Failed to save report: {exc}")
+            logger.error(f"[REPORT] Failed to save report: {exc}")
             raise
 
     @property

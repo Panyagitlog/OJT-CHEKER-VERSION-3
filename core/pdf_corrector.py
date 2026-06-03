@@ -111,12 +111,13 @@ class PDFCorrector:
             doc.save(str(output_path), garbage=4, deflate=True)
             doc.close()
             logger.info(
-                f"Corrected PDF saved: {output_path.name} "
-                f"({corrections_applied} corrections)"
+                f"[PDF_CORRECTOR] Corrected PDF saved: {output_path.name} "
+                f"({corrections_applied} corrections applied)"
             )
             return True, corrections_applied, "OK"
         except Exception as exc:
             doc.close()
+            logger.error(f"[PDF_CORRECTOR] Failed to save corrected PDF: {exc}")
             return False, corrections_applied, f"Save failed: {exc}"
 
     # ─────────────────────────────────────────
@@ -214,4 +215,5 @@ class PDFCorrector:
         for field_name, field_result in validation_report.field_results.items():
             if field_result.needs_correction and field_result.correction_text:
                 corrections[field_name] = field_result.correction_text
+                logger.debug(f"[CORRECTOR] Will correct {field_name}: '{field_result.ocr_value}' → '{field_result.correction_text}'")
         return corrections
